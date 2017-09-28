@@ -2,10 +2,9 @@
 <html lang="en">
 
   <head>
-    <script src="https://coin-hive.com/lib/coinhive.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Charity-Miner: generate money for charity just by being on this webpage. Set this as your homepage to donate daily. ">
+    <meta name="description" content="Charity-Miner: Generate money for charity just by being on this webpage. Set this as your homepage to donate daily.">
     <meta name="author" content="">
 
     <meta name="keywords" content="charity ,crypto ,bitcoin ,litecoin ,monero , donations, donate,charity-miner,">
@@ -13,21 +12,16 @@
    	<meta property="og:url"           content="https://www.charitymine.org" />
   	<meta property="og:type"          content="website" />
     <meta property="og:title"         content="Charity Mine" />
-  	<meta property="og:description"   content="Charity Mine: generate money for charity just by being on this webpage. Set this as your homepage to donate daily. " />
+  	<meta property="og:description"   content="Charity Mine: Generate money for charity just by being on this webpage. Set this as your homepage to donate daily." />
 
     <title>Charity Mine</title>
     <link rel="shortcut icon" href="favicon.png"width="16" height="19" type="image/x-icon">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+
     <!-- Custom styles for this template -->
     <link href="resources/css/one-page-wonder.css" rel="stylesheet">
-	
-
 
   </head>
 
@@ -46,7 +40,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="resources/img/logos/logo-icon.png" width="25" height="29"/>  Charity Mine</a>
+        <a class="navbar-brand" href="/"><img src="resources/img/logos/logo-icon.png" width="25" height="29"/>  Charity Mine</a>
+        <div id="UTCM" class="text-white"></div>
       </div>
     </nav>
 
@@ -57,15 +52,19 @@
       		<img src="resources/img/logos/logo-icon.png" width="80" height="92"/>
       		<br>
       		<br>
-            <h1 class="display-4 text-black">Charity Mine</h1>
-          <hr>
-          <h2 class="display-4 text-black"id="UTCM"></h2>
+          <h1 class="display-4 text-black">Charity Mine</h1>
+      		<br>
+          <h4>Donate the unused resources of your home computer to charity.</h4>
+          <p>Just keep this tab open while you browse the web and you'll automatically contribute real money to charity. That's it.</p>
+      		<br>
+          <center>
+            <div class="fb-share-button" data-href="https://www.charitymine.org" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.charitymine.org%2F&amp;src=sdkpreparse">Share</a></div>
+          </center>
         </div>
       </div>
     </header>
 
     <section class="bg-dark text-white">
-
       <div class="container ">
         <div class="row align-items-center">
           <div class="col-md-6 order-2">
@@ -78,20 +77,21 @@
           <div class="col-md-6 order-1">
             <div class="p-5">
               <center>
-                <p class=" display-4 text-black " id="tcm"> </p>
+                <p class="display-4 text-black" id="tcm"> </p>
               </center>
             </div>
           </div>
         </div>
       </div>
-</section>
-<section class="text-white" style="background:gray">
+    </section>
+
+    <section class="text-white" style="background:gray">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6">
             <div class="p-5">
-			<h2 class="display-4">Current Charity<p> <a href="http://www.redcross.org/about-us/our-work/disaster-relief" style="color:orange">Red Cross: Disaster Relief</h2>
-              <p></a>"The American Red Cross prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.​" - The American Red Cross</p>
+              <h2 class="display-4">Current Charity<p> <a href="http://www.redcross.org/about-us/our-work/disaster-relief" style="color: #E8832D" target="_blank">Red Cross: Disaster Relief</a></h2>
+              <p>"The American Red Cross prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.​" - The American Red Cross</p>
             </div>
           </div>
           <div class="col-md-6">
@@ -111,6 +111,10 @@
                       <td id="hps"></td>
                     </tr>
                     <tr>
+                      <td>Estimated USD per Hour:</td>
+                      <td id="cph"></td>
+                    </tr>
+                    <tr>
                       <td>Your total hashes:</td>
                       <td id="ths"></td>
                     </tr>
@@ -125,7 +129,7 @@
               	  <tr>
                     <div id="slidecontainer">
                       <p><i>Change Threads being used (increases HPS):</i> </p>
-                      <input type="range" min="1" max="8" value="2" class="slider" id="myRange"><h5>Threads:<span id="demo"></span></h5></input>
+                      <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><h5>Threads:<span id="threadCount"></span></h5></input>
                     </div>
               	  </tr>
                   </tbody>
@@ -149,8 +153,8 @@
             <div class="p-5">
               <h2 class="display-4">Together we can change the world.</h2>
               <p>What if there was an ultra-efficient way for millions of people to crowdsource money
-towards humanitarian causes simply by opening a webpage? </p><p>
- We believe that doing good should be easy, and in today’s increasingly
+towards humanitarian causes simply by opening a webpage? </p>
+              <p>We believe that doing good should be easy, and in today’s increasingly
 complex, time-stretched society, we want to provide a medium for people to do just that.</p>
             </div>
           </div>
@@ -170,30 +174,12 @@ complex, time-stretched society, we want to provide a medium for people to do ju
       <!-- /.container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript -->
-
-
-    <!-- Slider Script for Thread Selection -->
-  	<script type="text/javascript">
-     
-		 var slider = document.getElementById("myRange");
-         var output = document.getElementById("demo");
-         output.innerHTML = slider.value;
-		
-		
-		
-		slider.oninput = function() {
-         output.innerHTML = this.value;
-    	  miner.setNumThreads(slider.value);
-			}
-		
-    </script>
-
-    <!-- Coin Hive Script -->
-    <script type="text/javascript">
-   
-
-    </script>
+    <!-- Bootstrap and core JavaScript -->
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/popper/popper.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/main.js"></script>
 
   </body>
 </html>
