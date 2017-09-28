@@ -1,1 +1,1 @@
-# charity-miner.org
+# charitymine.org
