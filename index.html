@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <script src="https://coin-hive.com/lib/coinhive.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Charity-Miner: generate money for charity just by being on this webpage. Set this as your homepage to donate daily. ">
+    <meta name="author" content="">
+
+    <meta name="keywords" content="charity ,crypto ,bitcoin ,litecoin ,monero , donations, donate,charity-miner,">
+
+   	<meta property="og:url"           content="https://www.charitymine.org" />
+  	<meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Charity Mine" />
+  	<meta property="og:description"   content="Charity Mine: generate money for charity just by being on this webpage. Set this as your homepage to donate daily. " />
+
+    <title>Charity Mine</title>
+    <link rel="shortcut icon" href="favicon.png"width="16" height="19" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="resources/css/one-page-wonder.css" rel="stylesheet">
+	
+
+
+  </head>
+
+  <body>
+
+    <!-- Facebook's SDK - for the share button -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1752758421415804";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="resources/img/logos/logo-icon.png" width="25" height="29"/>  Charity Mine</a>
+      </div>
+    </nav>
+
+    <!-- Hero section -->
+    <header class="masthead">
+      <div class="overlay">
+        <div class="container">
+      		<img src="resources/img/logos/logo-icon.png" width="80" height="92"/>
+      		<br>
+      		<br>
+            <h1 class="display-4 text-black">Charity Mine</h1>
+          <hr>
+          <h2 class="display-4 text-black"id="UTCM"></h2>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-dark text-white">
+
+      <div class="container ">
+        <div class="row align-items-center">
+          <div class="col-md-6 order-2">
+            <div class="p-5">
+              <h3 class="display-4">A new way to donate:</h3>
+              <p>This site uses a small portion of your computing power to help solve mathematical puzzles. When a puzzle gets solved it generates Monero (XMR), a cryptocurrency which can be traded in for US Dollars. If more users visit this site, more Monero is mined for charity.</p>
+              <p><i> Donations are made every fifty dollars earned and receipts will be posted to the site.</i> </p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1">
+            <div class="p-5">
+              <center>
+                <p class=" display-4 text-black " id="tcm"> </p>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="text-white" style="background:gray">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="p-5">
+			<h2 class="display-4">Current Charity<p> <a href="http://www.redcross.org/about-us/our-work/disaster-relief" style="color:orange">Red Cross: Disaster Relief</h2>
+              <p></a>"The American Red Cross prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.​" - The American Red Cross</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-5">
+        			<center>
+          			<h1 class="display-4"> Stats</h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Stats</th>
+                      <th>Hashes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Hashes Per Second (HPS):</td>
+                      <td id="hps"></td>
+                    </tr>
+                    <tr>
+                      <td>Your total hashes:</td>
+                      <td id="ths"></td>
+                    </tr>
+                    <tr>
+                      <td>Total Hashes</td>
+                      <td id="tah"></td>
+                    </tr>
+                    <tr>
+                      <td>Threads:</td>
+                      <td id="nTh"></td>
+                    </tr>
+              	  <tr>
+                    <div id="slidecontainer">
+                      <p><i>Change Threads being used (increases HPS):</i> </p>
+                      <input type="range" min="1" max="8" value="2" class="slider" id="myRange"><h5>Threads:<span id="demo"></span></h5></input>
+                    </div>
+              	  </tr>
+                  </tbody>
+                </table>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 order-2">
+            <div class="p-5">
+              <img class="img-fluid" src="resources/img/logos/logo-large.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6 order-1">
+            <div class="p-5">
+              <h2 class="display-4">Together we can change the world.</h2>
+              <p>What if there was an ultra-efficient way for millions of people to crowdsource money
+towards humanitarian causes simply by opening a webpage? </p><p>
+ We believe that doing good should be easy, and in today’s increasingly
+complex, time-stretched society, we want to provide a medium for people to do just that.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Contact - <i>minerforcharity@gmail.com</i></p>
+        <br>
+        <center>
+          <div class="fb-like" data-href="https://www.charitymine.org" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+        </center>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+
+
+    <!-- Slider Script for Thread Selection -->
+  	<script type="text/javascript">
+     
+		 var slider = document.getElementById("myRange");
+         var output = document.getElementById("demo");
+         output.innerHTML = slider.value;
+		
+		
+		
+		slider.oninput = function() {
+         output.innerHTML = this.value;
+    	  miner.setNumThreads(slider.value);
+			}
+		
+    </script>
+
+    <!-- Coin Hive Script -->
+    <script type="text/javascript">
+   
+
+    </script>
+
+  </body>
+</html>
