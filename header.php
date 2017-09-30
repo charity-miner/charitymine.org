@@ -29,7 +29,7 @@
         <?php } ?>
         <?php bloginfo('name'); ?>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -40,7 +40,7 @@
         'depth'             => 2,
         'container'         => 'div',
         'container_class'   => 'collapse navbar-collapse',
-        'container_id'      => 'main-nav',
+        'container_id'      => 'navbar',
         'menu_class'        => 'navbar-nav ml-auto',
         'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
         'walker'            => new WP_Bootstrap_Navwalker())
