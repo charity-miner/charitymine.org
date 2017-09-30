@@ -21,20 +21,24 @@ function enqueue_charity_mine_scripts() {
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
 
 // Get Coin Hive Public Key
-function charity_mine_get_coin_hive_public_key() {
+function charity_mine_js_helpers() {
+
+  $script = '<script type="text/javascript">';
+
+  $script .= 'userID = ' . get_current_user_id() . ';';
 
   if ( get_theme_mod( 'charity_mine_coin_hive_public' ) ) {
-    wp_send_json( get_theme_mod( 'charity_mine_coin_hive_public' ) );
-  } else {
-    echo false;
+    $script .= 'var publicKey = "' . get_theme_mod( 'charity_mine_coin_hive_public' ) . '";';
   }
 
+  $script .= '</script>';
+
+  echo $script;
 }
-add_action( 'wp_ajax_nopriv_coinhivepublic', 'charity_mine_get_coin_hive_public_key' );
-add_action( 'wp_ajax_coinhivepublic', 'charity_mine_get_coin_hive_public_key' );
+add_action( 'wp_footer', 'charity_mine_js_helpers' );
 
 // Get Coin Hive Data
-function charity_mine_get_coin_hive_data() {
+function charity_mine_get_coin_hive_account_data() {
 
   if ( get_theme_mod( 'charity_mine_coin_hive_secret' ) ) {
     $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
@@ -51,8 +55,8 @@ function charity_mine_get_coin_hive_data() {
   }
 
 }
-add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_data' );
-add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_data' );
+add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
+add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 
 
 // Register Coinhive Fields in Customizer

@@ -13,55 +13,54 @@ function callback(data) {
 (function($) {
 
   /////////////////////////////CREATE THE MINER////////////////////////////////////////////////////
-  $.get( "wp-admin/admin-ajax.php?action=coinhivepublic", function( data ) {
 
-    var publicKey = data;
+  // Set coinhive user to userID if logged in; else default to website user
+  var user = userID != 0 ? userID : "website";
 
-    var miner = new CoinHive.User(publicKey, 'website',{
-    	threads: 2,
-    	autoThreads: false,
-    	throttle: 0,
-    	forceASMJS: false
-    });
-
-    ///////////////////////////////////START THE MINER/////////////////////////////////////////
-    miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
-
-    // Update stats once per second
-    setInterval(window.onload=function() {
-
-      var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
-      var totalHashes = miner.getTotalHashes(interpolate=true);
-      var acceptedHashesCash = miner.getAcceptedHashes();  // Total Accepted Hashes
-      var Dividedby6B = acceptedHashesCash / 6000000000; // Total Accepted Hashes/6 Billion  . . .
-      var USDDividedby6B = totalHashes / 6000000000;
-      var UsersTotalCashMade = USDDividedby6B * XMRPrice;
-      var TotalCashMade = Dividedby6B * XMRPrice;   // Multiplied by the current price
-      var EstUSDperHour = (hashesPerSecond / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
-
-      if (miner.isRunning()) {
-    		$("#hps").html(hashesPerSecond);
-    		$("#cph").html("$" + EstUSDperHour.toFixed(8));
-    		$("#ths").html(totalHashes);
-    		$("#UTCM").html("Your contribution: $" + UsersTotalCashMade.toFixed(8));
-      } else {
-    	  $("#hps").html("Miner Offline");
-      }
-    }, 800);
-
-    /////////////////////////SET SLIDER FOR THREAD SELECTION///////////////////////////////
-    var slider = $("#threadRange");
-    var output = $("#threadCount");
-    output.html(miner.getNumThreads());
-
-    slider.change( function() {
-      output.html(this.value);
-      miner.setNumThreads(this.value);
-    });
-
+  var miner = new CoinHive.User(publicKey, user,{
+  	threads: 2,
+  	autoThreads: false,
+  	throttle: 0,
+  	forceASMJS: false
   });
 
-  /////////////////////////GET TOTAL HASHRATE///////////////////////////////
+  ///////////////////////////////////START THE MINER/////////////////////////////////////////
+  miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+
+  // Update stats once per second
+  setInterval(window.onload=function() {
+
+    var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
+    var totalHashes = miner.getTotalHashes(interpolate=true);
+    var acceptedHashesCash = miner.getAcceptedHashes();  // Total Accepted Hashes
+    var Dividedby6B = acceptedHashesCash / 6000000000; // Total Accepted Hashes/6 Billion  . . .
+    var USDDividedby6B = totalHashes / 6000000000;
+    var UsersTotalCashMade = USDDividedby6B * XMRPrice;
+    var TotalCashMade = Dividedby6B * XMRPrice;   // Multiplied by the current price
+    var EstUSDperHour = (hashesPerSecond / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
+
+    if (miner.isRunning()) {
+  		$("#hps").html(hashesPerSecond);
+  		$("#cph").html("$" + EstUSDperHour.toFixed(8));
+  		$("#ths").html(totalHashes);
+  		$("#UTCM").html("Your contribution: $" + UsersTotalCashMade.toFixed(8));
+    } else {
+  	  $("#hps").html("Miner Offline");
+    }
+  }, 800);
+
+  /////////////////////////SET SLIDER FOR THREAD SELECTION///////////////////////////////
+  var slider = $("#threadRange");
+  var output = $("#threadCount");
+  output.html(miner.getNumThreads());
+
+  slider.change( function() {
+    output.html(this.value);
+    miner.setNumThreads(this.value);
+  });
+
+
+  /////////////////////////GET ACCOUNT STATS///////////////////////////////
   setInterval(window.onload=function() {
     $.get( "wp-admin/admin-ajax.php?action=coinhiveapi", function( data ) {
 
