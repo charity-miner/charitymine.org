@@ -19,3 +19,69 @@ function enqueue_charity_mine_scripts() {
   wp_enqueue_script( 'main-js', get_template_directory_uri() . '/resources/js/main.js', array('jquery'), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
+
+// Get Coin Hive Public Key
+function charity_mine_get_coin_hive_public_key() {
+
+  if ( get_theme_mod( 'charity_mine_coin_hive_public' ) ) {
+    wp_send_json( get_theme_mod( 'charity_mine_coin_hive_public' ) );
+  } else {
+    echo false;
+  }
+
+}
+add_action( 'wp_ajax_nopriv_coinhivepublic', 'charity_mine_get_coin_hive_public_key' );
+add_action( 'wp_ajax_coinhivepublic', 'charity_mine_get_coin_hive_public_key' );
+
+// Get Coin Hive Data
+function charity_mine_get_coin_hive_data() {
+
+  if ( get_theme_mod( 'charity_mine_coin_hive_secret' ) ) {
+    $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+  } else {
+    echo false;
+  }
+
+  $response = wp_remote_get("https://api.coinhive.com/stats/site?secret=" . $secret_key);
+
+  if ( is_array( $response ) ) {
+    wp_send_json($response['body']);
+  } else {
+    echo false;
+  }
+
+}
+add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_data' );
+add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_data' );
+
+
+// Register Coinhive Fields in Customizer
+function charity_mine_customizer_settings($wp_customize) {
+
+  $wp_customize->add_section('charity_mine_coin_hive', array(
+    'title' => 'Coin Hive Settings',
+    'description' => '',
+    'priority' => 120,
+  ));
+
+  // Public Key
+  $wp_customize->add_setting('charity_mine_coin_hive_public');
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'charity_mine_coin_hive_public',
+    array(
+      'label' => 'Coin Hive Public Key',
+      'section' => 'charity_mine_coin_hive',
+      'settings' => 'charity_mine_coin_hive_public',
+    ) )
+  );
+
+  // Secret Key
+  $wp_customize->add_setting('charity_mine_coin_hive_secret');
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'charity_mine_coin_hive_secret',
+    array(
+      'label' => 'Coin Hive Secret Key',
+      'section' => 'charity_mine_coin_hive',
+      'settings' => 'charity_mine_coin_hive_secret',
+    ) )
+  );
+}
+add_action('customize_register', 'charity_mine_customizer_settings');
