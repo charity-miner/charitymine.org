@@ -30,24 +30,22 @@ function callback(data) {
     // Update stats once per second
     setInterval(window.onload=function() {
 
-      var threadCount = miner.getNumThreads();
       var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
       var totalHashes = miner.getTotalHashes(interpolate=true);
       var acceptedHashes = miner.getAcceptedHashes();
-    	var numThreads = miner.getNumThreads();
-    	var acceptedHashesCash = miner.getAcceptedHashes();  // Total Accepted Hashes
-    	var Dividedby6B = acceptedHashesCash / 6000000000; // Total Accepted Hashes/6 Billion  . . .
-    	var USDDividedby6B = totalHashes / 6000000000;
-    	var UsersTotalCashMade = USDDividedby6B * XMRPrice;
-    	var TotalCashMade = Dividedby6B * XMRPrice;   // Multiplied by the current price
-    	var EstUSDperHour = (hashesPerSecond / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
+      var numThreads = miner.getNumThreads();
+      var acceptedHashesCash = miner.getAcceptedHashes();  // Total Accepted Hashes
+      var Dividedby6B = acceptedHashesCash / 6000000000; // Total Accepted Hashes/6 Billion  . . .
+      var USDDividedby6B = totalHashes / 6000000000;
+      var UsersTotalCashMade = USDDividedby6B * XMRPrice;
+      var TotalCashMade = Dividedby6B * XMRPrice;   // Multiplied by the current price
+      var EstUSDperHour = (hashesPerSecond / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
 
       if (miner.isRunning()) {
     		$("#hps").html(hashesPerSecond);
     		$("#cph").html("$" + EstUSDperHour.toFixed(8));
     		$("#ths").html(totalHashes);
     		$("#tah").html(acceptedHashes);
-    		$("#tcm").html("Total USD Raised: $" + TotalCashMade.toFixed(3));
     		$("#nTh").html(numThreads);
     		$("#UTCM").html("Your contribution: $" + UsersTotalCashMade.toFixed(8));
       } else {
@@ -75,9 +73,12 @@ function callback(data) {
 
       if (data != false && !result.error) {
 
+        let totalHashes = result.hashesTotal;
+        let totalHashesUSD = "$" + ((totalHashes / 6000000000) * XMRPrice).toFixed(3);
         let totalRate = result.hashesPerSecond;
         let totalRateUSD = "$" + ((totalRate / 6000000000) * XMRPrice * 60 * 60 * 24).toFixed(3);
 
+    		$("#tcm").html("Total USD Raised: " + totalHashesUSD);
         $('#totalrate').html(totalRate);
         $('#totalrateUSD').html("Right now, people around the world are raising " + totalRateUSD + " per day." );
         $('#totalrateUSDtable').html(totalRateUSD);
