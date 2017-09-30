@@ -11,6 +11,7 @@ function callback(data) {
 
 
 (function($) {
+
   /////////////////////////////CREATE THE MINER////////////////////////////////////////////////////
   var miner = new CoinHive.User('lzU0IgctdSTntRDYXUhp8lOPG189Jr5V', 'test',{
   	threads: 2,
@@ -49,14 +50,15 @@ function callback(data) {
   	  $("#hps").html("Miner Offline");
     }
   }, 800);
+
+  /////////////////////////SET SLIDER FOR THREAD SELECTION///////////////////////////////
+  var slider = $("#threadRange");
+  var output = $("#threadCount");
+  output.html(miner.getNumThreads());
+
+  slider.change( function() {
+    output.html(this.value);
+    miner.setNumThreads(this.value);
+  });
+
 })( jQuery );
-
-/////////////////////////SET SLIDER FOR THREAD SELECTION///////////////////////////////
-var slider = document.getElementById("threadRange");
-var output = document.getElementById("threadCount");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  miner.setNumThreads(slider.value);
-}
