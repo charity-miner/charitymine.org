@@ -83,20 +83,19 @@ add_action( 'wp_footer', 'charity_mine_js_helpers' );
 
 function charity_mine_get_coin_hive_account_data() {
 
-  if ( get_theme_mod( 'charity_mine_coin_hive_secret' ) ) {
-    $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
-  } else {
+  $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+
+  if (! $secret_key ) {
     echo false;
   }
 
-  $response = wp_remote_get("https://api.coinhive.com/stats/site?secret=" . $secret_key);
+  $response = wp_remote_get( "https://api.coinhive.com/stats/site?secret=" . $secret_key );
 
-  if ( is_array( $response ) ) {
-    wp_send_json($response['body']);
-  } else {
+  if (! is_array( $response ) ) {
     echo false;
   }
 
+  wp_send_json( $response['body'] );
 }
 add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
