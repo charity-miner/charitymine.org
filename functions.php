@@ -20,7 +20,7 @@ function enqueue_charity_mine_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
 
-// Get Coin Hive Public Key
+// Add handy js variables
 function charity_mine_js_helpers() {
 
   $script = '<script type="text/javascript">';
@@ -57,7 +57,6 @@ function charity_mine_get_coin_hive_account_data() {
 }
 add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
-
 
 // Register Coinhive Fields in Customizer
 function charity_mine_customizer_settings($wp_customize) {
