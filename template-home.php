@@ -26,10 +26,10 @@
     </div>
   </header>
 
-  <section class="bg-dark text-white">
+  <section class="bg-dark">
     <div class="container ">
       <div class="row align-items-center">
-        <div class="col-md-6 order-2">
+        <div class="text-white col-md-6 order-2">
           <div class="p-5">
             <h3 class="display-4">A new way to donate:</h3>
             <p>This site uses a small portion of your computing power to help solve mathematical puzzles. When a puzzle gets solved it generates Monero (XMR), a cryptocurrency which can be traded in for US Dollars. If more users visit this site, more Monero is mined for charity.</p>
@@ -38,9 +38,11 @@
           </div>
         </div>
         <div class="col-md-6 order-1">
-          <div class="p-5">
+          <div class="p-4">
             <center>
-              <p class="display-4 text-black " id="tcm"> </p>
+            <div class ="boxUSD">
+              <p class="display-4  " id="tcm"> </p>
+              </div>
             </center>
           </div>
         </div>
@@ -53,8 +55,8 @@
       <div class="row align-items-center">
         <div class="col-md-6">
           <div class="p-5">
-            <h2 class="display-4">Current Charity<p> <a href="http://www.redcross.org/about-us/our-work/disaster-relief" style="color: #E8832D" target="_blank">Red Cross: Disaster Relief</a></h2>
-            <p>"The American Red Cross prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.​" - The American Red Cross</p>
+            <h2 class="display-4">Current Charity<p> <a href="https://www.directrelief.org/" style="color: #E8832D" target="_blank">Direct Relief</a></h2>
+            <p>"Direct Relief is a humanitarian aid organization, active in all 50 states and more than 80 countries, with a mission to improve the health and lives of people affected by poverty or emergencies.​" - Direct Relief</p>
           </div>
         </div>
         <div class="col-md-6">
