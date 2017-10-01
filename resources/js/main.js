@@ -1,4 +1,10 @@
-/////////////////////////RETRIEVE MONERO(XMR) COST///////////////////////////////
+/** Get Live  Monero Price
+*
+*
+* Contacts the Coinmarketcap API, grabs up to date Monero Price
+*
+*	
+*/
 var XMRPrice;
 
 jQuery.getJSON("https://api.coinmarketcap.com/v1/ticker/monero/", callback);
@@ -8,11 +14,23 @@ function callback(data) {
 		XMRPrice=data[i]['price_usd'];
 	}
 }
-
+/**  JQuery Wrapper
+*
+*
+*
+*/
 
 (function($) {
 
-  /////////////////////////////CREATE THE MINER////////////////////////////////////////////////////
+  /**
+  *
+  *	Create Coinhive Miner 
+  *	
+  *	Checks for User, if no user, set user to 'website'.
+  *
+  *	Start the Miner.
+  *
+  */
 
   // Set coinhive user to userID if logged in; else default to website user
   var user = userID != 0 ? userID : "website";
@@ -24,10 +42,14 @@ function callback(data) {
   	forceASMJS: false
   });
 
-  ///////////////////////////////////START THE MINER/////////////////////////////////////////
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
-  // Update stats once per second
+  /** Website Stats
+* 
+*	Hashes per second, Total Hashes, Total Cash Made Etc.
+*
+*
+*/
   setInterval(window.onload=function() {
 
     var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
@@ -49,7 +71,12 @@ function callback(data) {
     }
   }, 800);
 
-  /////////////////////////SET SLIDER FOR THREAD SELECTION///////////////////////////////
+/** Thread Slider
+* 
+*
+*	Range 1-8 
+*
+*/
   var slider = $("#threadRange");
   var output = $("#threadCount");
   output.html(miner.getNumThreads());
@@ -60,7 +87,13 @@ function callback(data) {
   });
 
 
-  /////////////////////////GET ACCOUNT STATS///////////////////////////////
+/**
+*	Coin Hive Users 
+*	
+*	Coin Hive HTTP Section
+*
+*	User Stats, Overall User Stats.
+*/
   setInterval(window.onload=function() {
     $.get( "wp-admin/admin-ajax.php?action=coinhiveapi", function( data ) {
 
