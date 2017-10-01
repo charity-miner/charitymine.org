@@ -1,10 +1,11 @@
-/** Get Live  Monero Price
+/**
 *
+* Get Live Monero Price
 *
 * Contacts the Coinmarketcap API, grabs up to date Monero Price
 *
-*	
-*/
+**/
+
 var XMRPrice;
 
 jQuery.getJSON("https://api.coinmarketcap.com/v1/ticker/monero/", callback);
@@ -14,9 +15,13 @@ function callback(data) {
 		XMRPrice=data[i]['price_usd'];
 	}
 }
-/**  JQuery Wrapper
+
+
+/**
 *
+* jQuery Wrapper for Coinhive Miner
 *
+* Contains all Coinhive miner functions and allows for jQuery usage
 *
 */
 
@@ -24,32 +29,32 @@ function callback(data) {
 
   /**
   *
-  *	Create Coinhive Miner 
-  *	
-  *	Checks for User, if no user, set user to 'website'.
+  *	Create Coinhive Miner
   *
-  *	Start the Miner.
+  *	Checks for user id; if no user, sets user to 'website'.
   *
-  */
+  *	Builds the default miner settings and starts the miner.
+  *
+  **/
 
-  // Set coinhive user to userID if logged in; else default to website user
   var user = userID != 0 ? userID : "website";
-
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
   	autoThreads: false,
   	throttle: 0,
   	forceASMJS: false
   });
-
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
-  /** Website Stats
-* 
-*	Hashes per second, Total Hashes, Total Cash Made Etc.
-*
-*
-*/
+
+  /**
+  *
+  * Get & Show Live Miner Stats
+  *
+  *	Hashes per second, Total Hashes, Total Cash Made Etc.
+  *
+  **/
+
   setInterval(window.onload=function() {
 
     var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
@@ -71,14 +76,20 @@ function callback(data) {
     }
   }, 800);
 
-/** Thread Slider
-* 
-*
-*	Range 1-8 
-*
-*/
+
+  /**
+  *
+  * Set Thread Slider
+  *
+  *	Pairs the homepage slider with the active thread count in the miner.
+  *
+  * Range 1-8
+  *
+  **/
+
   var slider = $("#threadRange");
   var output = $("#threadCount");
+
   output.html(miner.getNumThreads());
 
   slider.change( function() {
@@ -87,14 +98,19 @@ function callback(data) {
   });
 
 
-/**
-*	Coin Hive Users 
-*	
-*	Coin Hive HTTP Section
-*
-*	User Stats, Overall User Stats.
-*/
+  /**
+  *
+  *	Get & Show Coin Hive Account Stats
+  *
+  *	AJAX request to admin-ajax.php using coinhiveapi action
+  * See functions.php charity_mine_get_coin_hive_account_data()
+  *
+  *	Returns total hashes, total hps, and history of hps.
+  *
+  **/
+
   setInterval(window.onload=function() {
+
     $.get( "wp-admin/admin-ajax.php?action=coinhiveapi", function( data ) {
 
       let result = JSON.parse(data);
@@ -117,6 +133,8 @@ function callback(data) {
       }
 
     });
+
   }, 10000);
+
 
 })( jQuery );

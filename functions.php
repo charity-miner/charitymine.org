@@ -1,30 +1,40 @@
 <?php
+/**
+*
+* Bootstrap Nav Walker
+*
+* Includes the nav walker for use in wp_nav_menu()
+*
+**/
 
-/** Nav Walker Setup
-*
-*  
-*
-*
-*/
 require_once('vendor/bootstrap-nav-walker/wp-bootstrap-nav-walker.php');
 
-/** Navigation Menus
-*	
-* 
-*	Header & Footer
+
+/**
 *
-*/
+* Register Navigation Menus
+*
+*	Creates Header & Footer menus for use in wp_nav_menu()
+* Manage in WP admin under Appearance > Menus
+*
+**/
+
 register_nav_menus( array(
   'primary' => __( 'Primary Menu', 'charitymine' ),
   'footer' => __( 'Footer Menu', 'charitymine' ),
 ) );
 
-/**  Imports / Source Files
+
+/**
 *
-*	
-*	Bootstrap/Font Awesome/ CoinHive/ Popper/ Main.js
+*	Enqueue Styles & Scripts
 *
-*/
+* Styles appended to wp_head; Scripts appended to wp_footer; jQuery registered through dependency
+*
+*	Bootstrap / Font Awesome / CoinHive / Popper / Main.js
+*
+**/
+
 function enqueue_charity_mine_scripts() {
   wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css', null, '4.0.0' );
   wp_enqueue_style( 'font-awesome-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', null, '4.7.0' );
@@ -36,11 +46,15 @@ function enqueue_charity_mine_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
 
-/** Javascript Helpers
+
+/**
 *
-*	Get User ID, Grab public key 
-*	
-*/
+* Javascript Helpers
+*
+*	Get user ID and public key and append to wp_footer
+*
+**/
+
 function charity_mine_js_helpers() {
 
   $script = '<script type="text/javascript">';
@@ -57,12 +71,16 @@ function charity_mine_js_helpers() {
 }
 add_action( 'wp_footer', 'charity_mine_js_helpers' );
 
-/** Coin Hive Account Data
+
+/**
 *
-*	Pass in secret, get stats.
+* Coin Hive Account Data
 *
-*  Returns Data to Body
-*/
+*	Calls Coinhive API and returns account data JSON.
+* See main.js "Get & Show Coin Hive Account Stats"
+*
+**/
+
 function charity_mine_get_coin_hive_account_data() {
 
   if ( get_theme_mod( 'charity_mine_coin_hive_secret' ) ) {
@@ -83,14 +101,18 @@ function charity_mine_get_coin_hive_account_data() {
 add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 
+
 /**
-* Coin Hive Keys Customizer
-*  
-*	The menu to add your coin hive keys.
 *
-*/
+* Customizer Settings
+*
+*	Adds Coin Hive Settings section and settings.
+*
+**/
+
 function charity_mine_customizer_settings($wp_customize) {
 
+  // New Settings Section
   $wp_customize->add_section('charity_mine_coin_hive', array(
     'title' => 'Coin Hive Settings',
     'description' => '',
