@@ -40,13 +40,9 @@
         <div class="col-md-6 order-1">
           <div class="p-4">
             <center>
-<<<<<<< HEAD
-              <p id="siteTotalHashesUSD" class="display-4 text-black"></p>
-=======
-            <div class ="boxUSD">
-              <p class="display-4  " id="tcm"> </p>
+              <div class="boxUSD">
+                <p id="siteTotalHashesUSD" class="display-4"></p>
               </div>
->>>>>>> refs/remotes/origin/master
             </center>
           </div>
         </div>
@@ -76,10 +72,6 @@
                   <tr>
                   <td>Community Hashes Per Second:</td>
                     <td id="siteTotalRate"></td>
-                  </tr>
-                  <tr>
-                    <td>Your Est. USD per Hour:</td>
-                    <td id="estUsdPerHour"></td>
                   </tr>
                   <tr>
                     <td>Est. Community USD per Day:</td>

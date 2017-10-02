@@ -60,14 +60,11 @@ function callback(data) {
     var minerHPS = Math.round(miner.getHashesPerSecond() * 100) / 100;
     var minerTotalHashes = miner.getTotalHashes(interpolate=true); // updates every second
     //var userTotalHashes = miner.getAcceptedHashes(); // updates every 1-20 seconds; so we use static plus miner to get active results
-    var currentTotalHashes = userID != 0 ? userTotalHashes + minerTotalHashes : minerTotalHashes;
+    var currentTotalHashes = userTotalHashes + minerTotalHashes;
     var currentTotalCash = ( currentTotalHashes / 6000000000 ) * XMRPrice;
-
-    var estUsdPerHour = (minerHPS / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
 
     if (miner.isRunning()) {
   		$("#minerHPS").html(minerHPS);
-  		$("#estUsdPerHour").html("$" + estUsdPerHour.toFixed(8));
   		$("#currentTotalHashes").html(currentTotalHashes);
   		$(".currentTotalCash").html("Your contribution: $" + currentTotalCash.toFixed(8));
     } else {

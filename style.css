@@ -41,6 +41,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 #top-nav a {
   color: rgba(255,255,255,.5);
 }
+#top-nav .left-col .fa {
+  margin-left: 5px;
+}
 #top-nav .right-col {
   text-align: right;
 }
@@ -399,7 +402,7 @@ header.masthead > .overlay {
 .boxUSD {
 	border: 3px solid black;
     width: 300px;
-    height: 220px;    
+    height: 220px;
 	padding-top: 10px;
     opacity: 0.9;
 	background: white;
