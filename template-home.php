@@ -15,7 +15,7 @@
     		<br>
         <h1 class="display-4 text-black">Charity Mine</h1>
         <hr>
-        <div id="UTCM" class="display-4"></div>
+        <div class="currentTotalCash display-4">Your contribution: $0.00000000</div>
     		<br>
         <p class="lead"><i>Just keep this tab open while you browse the web and you'll automatically contribute real money to charity. <b>That's it.</b></i></p>
     		<br>
@@ -33,14 +33,14 @@
           <div class="p-5">
             <h3 class="display-4">A new way to donate:</h3>
             <p>This site uses a small portion of your computing power to help solve mathematical puzzles. When a puzzle gets solved it generates Monero (XMR), a cryptocurrency which can be traded in for US Dollars. If more users visit this site, more Monero is mined for charity.</p>
-            <p id="totalrateUSD"></p>
+            <p id="siteTotalRateUSD"></p>
             <p><i>* Donations are made every fifty dollars earned and receipts will be posted to the site.</i> </p>
           </div>
         </div>
         <div class="col-md-6 order-1">
           <div class="p-5">
             <center>
-              <p class="display-4 text-black " id="tcm"> </p>
+              <p id="siteTotalHashesUSD" class="display-4 text-black"></p>
             </center>
           </div>
         </div>
@@ -65,27 +65,27 @@
                 <tbody>
                   <tr>
                     <td>Your Hashes Per Second (HPS):</td>
-                    <td id="hps"></td>
+                    <td id="minerHPS"></td>
                   </tr>
                   <tr>
                   <td>Community Hashes Per Second:</td>
-                    <td id="totalrate"></td>
+                    <td id="siteTotalRate"></td>
                   </tr>
                   <tr>
                     <td>Your Est. USD per Hour:</td>
-                    <td id="cph"></td>
+                    <td id="estUsdPerHour"></td>
                   </tr>
                   <tr>
                     <td>Est. Community USD per Day:</td>
-                    <td id="totalrateUSDtable"></td>
+                    <td id="siteTotalRateUSDtable"></td>
                   </tr>
                   <tr>
                     <td>Your Total Hashes:</td>
-                    <td id="ths"></td>
+                    <td id="currentTotalHashes"></td>
                   </tr>
                   <tr>
                     <td>Community Total Hashes</td>
-                    <td id="tah"></td>
+                    <td id="siteTotalHashes"></td>
                   </tr>
                 </tbody>
               </table>

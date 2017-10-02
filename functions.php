@@ -46,6 +46,14 @@ function enqueue_charity_mine_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
 
+/**
+*
+* Remove Admin Bar
+*
+**/
+
+add_filter('show_admin_bar', '__return_false');
+
 
 /**
 *
@@ -59,11 +67,17 @@ function charity_mine_js_helpers() {
 
   $script = '<script type="text/javascript">';
 
-  $script .= 'userID = ' . get_current_user_id() . ';';
+  $script .= 'var homeURL = "' . get_home_url() . '";' . PHP_EOL;
+
+  $script .= 'var userID = ' . get_current_user_id() . ';' . PHP_EOL;
 
   if ( get_theme_mod( 'charity_mine_coin_hive_public' ) ) {
-    $script .= 'var publicKey = "' . get_theme_mod( 'charity_mine_coin_hive_public' ) . '";';
+    $script .= 'var publicKey = "' . get_theme_mod( 'charity_mine_coin_hive_public' ) . '";' . PHP_EOL;
   }
+
+  $userTotal = charity_mine_get_coin_hive_user_total();
+
+  $script .= 'var userTotalHashes = ' . $userTotal . ';' . PHP_EOL;
 
   $script .= '</script>';
 
@@ -99,6 +113,39 @@ function charity_mine_get_coin_hive_account_data() {
 }
 add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
+
+
+/**
+*
+* Coin Hive User Data
+*
+*	Calls Coinhive API and returns user data JSON.
+*
+**/
+
+function charity_mine_get_coin_hive_user_total() {
+
+  $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+  $userID = get_current_user_id();
+
+  if (! $secret_key || $userID == 0 ) {
+    return 0;
+  }
+
+  $response = wp_remote_get( "https://api.coinhive.com/user/balance?secret=" . $secret_key . "&name=" . $userID );
+
+  if (! is_array( $response ) ) {
+    return 0;
+  }
+
+  $response = json_decode($response['body']);
+
+  if ( $response->success !== true) {
+    return 0;
+  }
+
+  return $response->total;
+}
 
 
 /**
@@ -139,3 +186,18 @@ function charity_mine_customizer_settings($wp_customize) {
   );
 }
 add_action('customize_register', 'charity_mine_customizer_settings');
+
+
+/**
+*
+* Redirect User After Registration
+*
+*	Redirects the user to the stats page after successful registration.
+*
+**/
+
+function pp_redirect_after_registration() {
+ wp_redirect( get_home_url() );
+ exit;
+}
+add_action( 'pp_after_registration', 'pp_redirect_after_registration' );

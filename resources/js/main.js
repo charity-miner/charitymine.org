@@ -57,22 +57,21 @@ function callback(data) {
 
   setInterval(window.onload=function() {
 
-    var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
-    var totalHashes = miner.getTotalHashes(interpolate=true);
-    var acceptedHashesCash = miner.getAcceptedHashes();  // Total Accepted Hashes
-    var Dividedby6B = acceptedHashesCash / 6000000000; // Total Accepted Hashes/6 Billion  . . .
-    var USDDividedby6B = totalHashes / 6000000000;
-    var UsersTotalCashMade = USDDividedby6B * XMRPrice;
-    var TotalCashMade = Dividedby6B * XMRPrice;   // Multiplied by the current price
-    var EstUSDperHour = (hashesPerSecond / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
+    var minerHPS = Math.round(miner.getHashesPerSecond() * 100) / 100;
+    var minerTotalHashes = miner.getTotalHashes(interpolate=true); // updates every second
+    //var userTotalHashes = miner.getAcceptedHashes(); // updates every 1-20 seconds; so we use static plus miner to get active results
+    var currentTotalHashes = userID != 0 ? userTotalHashes + minerTotalHashes : minerTotalHashes;
+    var currentTotalCash = ( currentTotalHashes / 6000000000 ) * XMRPrice;
+
+    var estUsdPerHour = (minerHPS / 6000000000) * XMRPrice * 60 * 60;   // Estimated USD per hour based on HPS
 
     if (miner.isRunning()) {
-  		$("#hps").html(hashesPerSecond);
-  		$("#cph").html("$" + EstUSDperHour.toFixed(8));
-  		$("#ths").html(totalHashes);
-  		$("#UTCM").html("Your contribution: $" + UsersTotalCashMade.toFixed(8));
+  		$("#minerHPS").html(minerHPS);
+  		$("#estUsdPerHour").html("$" + estUsdPerHour.toFixed(8));
+  		$("#currentTotalHashes").html(currentTotalHashes);
+  		$(".currentTotalCash").html("Your contribution: $" + currentTotalCash.toFixed(8));
     } else {
-  	  $("#hps").html("Miner Offline");
+  	  $("#minerHPS").html("Miner Offline");
     }
   }, 800);
 
@@ -111,22 +110,22 @@ function callback(data) {
 
   setInterval(window.onload=function() {
 
-    $.get( "wp-admin/admin-ajax.php?action=coinhiveapi", function( data ) {
+    $.get( homeURL + "/wp-admin/admin-ajax.php?action=coinhiveapi", function( data ) {
 
       let result = JSON.parse(data);
 
       if (data != false && !result.error) {
 
-        let totalHashes = result.hashesTotal;
-        let totalHashesUSD = "$" + ((totalHashes / 6000000000) * XMRPrice).toFixed(3);
-        let totalRate = result.hashesPerSecond;
-        let totalRateUSD = "$" + ((totalRate / 6000000000) * XMRPrice * 60 * 60 * 24).toFixed(3);
+        let siteTotalHashes = result.hashesTotal;
+        let siteTotalHashesUSD = "$" + ((siteTotalHashes / 6000000000) * XMRPrice).toFixed(3);
+        let siteTotalRate = result.hashesPerSecond;
+        let siteTotalRateUSD = "$" + ((siteTotalRate / 6000000000) * XMRPrice * 60 * 60 * 24).toFixed(3);
 
-    		$("#tah").html(totalHashes);
-    		$("#tcm").html("Total USD Raised: " + totalHashesUSD);
-        $('#totalrate').html(totalRate);
-        $('#totalrateUSD').html("Right now, people around the world are raising " + totalRateUSD + " per day." );
-        $('#totalrateUSDtable').html(totalRateUSD);
+    		$("#siteTotalHashes").html(siteTotalHashes);
+    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalHashesUSD);
+        $('#siteTotalRate').html(siteTotalRate);
+        $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per day." );
+        $('#siteTotalRateUSDtable').html(siteTotalRateUSD);
 
       } else {
         console.log("There was an error: " + result.error);

@@ -24,7 +24,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Content
 	## Posts and pages
 	## Comments
-	## Miner
 # Media
 	## Captions
 	## Galleries
@@ -33,6 +32,28 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+#top-nav {
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+}
+#top-nav a {
+  color: rgba(255,255,255,.5);
+}
+#top-nav .right-col {
+  text-align: right;
+}
+
+@media (max-width: 575px) {
+  #top-nav .right-col {
+    text-align: center;
+  }
+  #top-nav .left-col {
+    display: none;
+  }
+
+}
 
 /*--------------------------------------------------------------
 # Footer
@@ -221,24 +242,6 @@ padding-top:25px;
 
 
 /*--------------------------------------------------------------
-## Miner
---------------------------------------------------------------*/
-
-#miner-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 999;
-}
-#miner {
-  float: right;
-  background: #ccc;
-  padding: 3px 15px 1px;
-  border-radius: 0 0 3px 3px;
-  border: 1px solid #aaa;
-}
-
-/*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
 .page-content .wp-smiley,
@@ -339,16 +342,6 @@ object {
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
  */
-
-body {
-    padding-top: 54px;
-}
-
-@media (min-width: 992px) {
-    body {
-        padding-top: 56px;
-    }
-}
 
 header.masthead {
   background: no-repeat center center scroll;
