@@ -396,3 +396,12 @@ header.masthead > .overlay {
     float: none;
     margin: 0 auto;
 }
+.boxUSD {
+	border: 3px solid black;
+    width: 300px;
+    height: 220px;    
+	padding-top: 10px;
+    opacity: 0.9;
+	background: white;
+	border-radius: 25px;
+}
