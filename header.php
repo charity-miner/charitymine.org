@@ -20,7 +20,27 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+  <div id="top-nav">
+    <div class="container">
+      <div class="row">
+        <div class="left-col col-sm-4">
+          <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+          <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.instagram.com/thecharitymine/" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="right-col col-sm-8">
+          <span class="currentTotalCash">Your contribution: $0.00000000</span>
+          <?php if (! is_user_logged_in() ) { ?>
+            &nbsp;&middot;&nbsp;
+            <a href="<?php echo get_home_url(); ?>/log-in">Login</a> &middot;
+            <a href="<?php echo get_home_url(); ?>/register">Register</a>
+          <?php } ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
     <div class="container">
 
       <a class="navbar-brand" href="<?php echo home_url(); ?>">
@@ -48,11 +68,3 @@
       ?>
     </div>
   </nav>
-
-  <?php if (! is_front_page()){ ?>
-    <div id="miner-container" class="container">
-      <div id="miner">
-        <span id="UTCM">Your contribution: $0.00000000</span>
-      </div>
-    </div>
-  <?php } ?>
