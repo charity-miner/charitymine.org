@@ -58,6 +58,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 }
 
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -408,3 +409,66 @@ header.masthead > .overlay {
 	background: white;
 	border-radius: 25px;
 }
+#bookmark-this {
+  padding: 10px 20px;
+  background-color: #ea831c;
+  border: 1px solid #ea831c;
+  border-radius: 4px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+     float: none;
+    margin: 0 auto;
+}
+
+#bookmark-this:hover {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+  text-decoration: none;
+}
+
+#bookmark-this:active {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+#learnmore-this {
+  padding: 10px 20px;
+  background-color: #ea831c;
+  border: 1px solid #ea831c;
+  border-radius: 4px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+     float: none;
+    margin: 0 auto;
+}
+
+#learnmore-this:hover {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+  text-decoration: none;
+}
+
+#learnmore-this:active {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
