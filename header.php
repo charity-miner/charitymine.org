@@ -29,7 +29,7 @@
           <a href="https://www.instagram.com/thecharitymine/" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
         <div class="right-col col-sm-8">
-          <span class="currentTotalCash">Your contribution: $0.00000000</span>
+          <span class="currentTotalCash">You have generated: $0.00000000</span>
           <?php if (! is_user_logged_in() ) { ?>
             &nbsp;&middot;&nbsp;
             <a href="<?php echo get_home_url(); ?>/log-in">Login</a> &middot;
