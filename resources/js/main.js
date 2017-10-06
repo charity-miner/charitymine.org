@@ -67,10 +67,27 @@ function callback(data) {
   		$("#minerHPS").html(minerHPS);
   		$("#currentTotalHashes").html(currentTotalHashes);
   		$(".currentTotalCash").html("You have generated: $" + currentTotalCash.toFixed(8));
+			move(minerTotalHashes);
     } else {
   	  $("#minerHPS").html("Miner Offline");
     }
   }, 800);
+	function move(width) {
+
+		percentage = width/3000;
+
+	  if ( percentage >= 100 ){
+		  console.log('maximum hit');
+		  width = 100;
+		  $(".progress-bar-animated").css("width", 100 + "%").text(100 + " %");
+
+	  } else {
+
+	    $(".progress-bar-animated").css("width", percentage.toFixed(3) + "%");
+			$("#per").html(percentage.toFixed(3)+'%')
+
+	  }
+	}
 
 
   /**
@@ -131,9 +148,9 @@ function callback(data) {
     });
 
   }, 10000);
-  
+
    jQuery(function($) {
-  
+
   $('#bookmark-this').click(function(e) {
     var bookmarkURL = window.location.href;
     var bookmarkTitle = document.title;
@@ -162,7 +179,7 @@ function callback(data) {
 
     return false;
   });
-  
+
 });
 
 

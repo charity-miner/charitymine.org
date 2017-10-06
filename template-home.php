@@ -15,23 +15,31 @@
     		<br>
         <h1 class="display-4 text-black">Charity Mine</h1>
         <hr>
-        <div class="currentTotalCash display-4">You have generated: $0.00000000</div>
-    		<br>
+
+        <p class="display-4">Your daily donation goal</p>
+        <p class="display-4" id="per"></p>
+        <div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:20px;"></div>
+</div>
+
+        	<br>
         <p class="lead"><i>Just keep this tab open while you browse the web and you'll automatically contribute real money to charity. <b>That's it.</b></i></p>
-		
-    		<br>
+
+
+
+          <br>
         <center>
 		<a id="learnmore-this" href="https://www.charitymine.org/how-it-works/" title="How it Works">How it works</a><p><br>
-	
+
           <div class="fb-share-button" data-href="https://www.charitymine.org" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.charitymine.org%2F&amp;src=sdkpreparse">Share</a></div>
-		  
+
 
         </center>
       </div>
     </div>
   </header>
-  
-  
+
+
 
   <section class="bg-dark">
     <div class="container ">
@@ -50,7 +58,7 @@
             <center>
               <div class="boxUSD">
                 <p id="siteTotalHashesUSD" class="display-4"></p>
-				
+
               </div>
             </center>
           </div>
@@ -101,7 +109,7 @@
                 <h3>Speed (Threads)</h3>
                 <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><br><strong>Threads: <span id="threadCount"></span></strong></input>
                 <p><small><i>Slide to change the number of threads being used (increases HPS). More threads will increase the donation amount, but may slow down your computer. Use with caution.</i></small></p>
-				
+
               </div>
             </center>
           </div>
@@ -132,7 +140,7 @@ complex, time-stretched society, we want to provide a medium for people to do ju
     </div>
   </section>
   <script>
- 
+
 </script>
 
 <?php get_footer(); ?>
