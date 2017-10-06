@@ -24,8 +24,8 @@
     <div class="container">
       <div class="row">
         <div class="left-col col-sm-4">
-          <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-          <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.facebook.com/thecharitymine/" target="_blank"><i class="fa fa-facebook"></i></a>
+          <a href="https://twitter.com/thecharitymine" target="_blank"><i class="fa fa-twitter"></i></a>
           <a href="https://www.instagram.com/thecharitymine/" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
         <div class="right-col col-sm-8">
