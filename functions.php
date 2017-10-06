@@ -46,6 +46,7 @@ function enqueue_charity_mine_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_charity_mine_scripts' );
 
+
 /**
 *
 * Remove Admin Bar
@@ -79,6 +80,16 @@ function charity_mine_js_helpers() {
 
   $script .= 'var userTotalHashes = ' . $userTotal . ';' . PHP_EOL;
 
+  $payoutData = charity_mine_get_coin_hive_payout_data();
+
+  if ( $payoutData ) {
+    $script .= 'var payoutPer1MHashes = ' . $payoutData->payoutPer1MHashes . ';' . PHP_EOL;
+    $script .= 'var xmrToUsd = ' . $payoutData->xmrToUsd . ';' . PHP_EOL;
+  } else {
+    $script .= 'var payoutPer1MHashes = 0.00014678103363155;' . PHP_EOL;
+    $script .= 'var xmrToUsd = 91.62;' . PHP_EOL;
+  }
+
   $script .= '</script>';
 
   echo $script;
@@ -92,6 +103,7 @@ add_action( 'wp_footer', 'charity_mine_js_helpers' );
 *
 *	Calls Coinhive API and returns account data JSON.
 * See main.js "Get & Show Coin Hive Account Stats"
+* https://coinhive.com/documentation/http-api#stats-site
 *
 **/
 
@@ -113,6 +125,35 @@ function charity_mine_get_coin_hive_account_data() {
 }
 add_action( 'wp_ajax_nopriv_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
 add_action( 'wp_ajax_coinhiveapi', 'charity_mine_get_coin_hive_account_data' );
+
+
+/**
+*
+* Coin Hive Payout Data
+*
+*	Calls Coinhive API and returns account payout data JSON.
+* https://coinhive.com/documentation/http-api#stats-payout
+*
+**/
+
+function charity_mine_get_coin_hive_payout_data() {
+
+  $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+
+  $response = wp_remote_get( "https://api.coinhive.com/stats/payout?secret=" . $secret_key );
+
+  if (! is_array( $response ) ) {
+    return 0;
+  }
+
+  $response = json_decode($response['body']);
+
+  if ( $response->success !== true) {
+    return 0;
+  }
+
+  return $response;
+}
 
 
 /**

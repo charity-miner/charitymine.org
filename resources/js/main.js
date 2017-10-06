@@ -1,24 +1,5 @@
 /**
 *
-* Get Live Monero Price
-*
-* Contacts the Coinmarketcap API, grabs up to date Monero Price
-*
-**/
-
-var XMRPrice;
-
-jQuery.getJSON("https://api.coinmarketcap.com/v1/ticker/monero/", callback);
-
-function callback(data) {
-	for (var i=0; i < data.length; i++) {
-		XMRPrice=data[i]['price_usd'];
-	}
-}
-
-
-/**
-*
 * jQuery Wrapper for Coinhive Miner
 *
 * Contains all Coinhive miner functions and allows for jQuery usage
@@ -55,38 +36,55 @@ function callback(data) {
   *
   **/
 
-  setInterval(window.onload=function() {
+  setInterval( window.onload = function() {
 
-    var minerHPS = Math.round(miner.getHashesPerSecond() * 100) / 100;
-    var minerTotalHashes = miner.getTotalHashes(interpolate=true); // updates every second
-    //var userTotalHashes = miner.getAcceptedHashes(); // updates every 1-20 seconds; so we use static plus miner to get active results
-    var currentTotalHashes = userTotalHashes + minerTotalHashes;
-    var currentTotalCash = ( currentTotalHashes / 6000000000 ) * XMRPrice;
+    let UsdPerHash = ( payoutPer1MHashes / 1000000 ) * xmrToUsd;
+    let minerHPS = Math.round( miner.getHashesPerSecond() * 100 ) / 100;
+    let minerTotalHashes = miner.getTotalHashes( interpolate=true ); // updates every second
+    //let userTotalHashes = miner.getAcceptedHashes(); // updates every 1-20 seconds; so we use static plus miner to get active results
+    let currentTotalHashes = userTotalHashes + minerTotalHashes;
+    let currentTotalCash = currentTotalHashes * UsdPerHash;
 
-    if (miner.isRunning()) {
-  		$("#minerHPS").html(minerHPS);
-  		$("#currentTotalHashes").html(currentTotalHashes);
-  		$(".currentTotalCash").html("You have generated: $" + currentTotalCash.toFixed(8));
-			move(minerTotalHashes);
+    if ( miner.isRunning() ) {
+
+  		$("#minerHPS").html( minerHPS );
+  		$("#currentTotalHashes").html( currentTotalHashes );
+  		$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
+
+			moveProgressBar( minerTotalHashes );
+
     } else {
-  	  $("#minerHPS").html("Miner Offline");
+  	  $("#minerHPS").html( "Miner Offline" );
     }
-  }, 800);
-	function move(width) {
 
-		percentage = width/3000;
+  }, 800);
+
+
+  /**
+  *
+  * Move the Progress Bar
+  *
+  **/
+
+	function moveProgressBar( width ) {
+
+  	let UsdGenerated = ( ( payoutPer1MHashes / 1000000 ) * xmrToUsd ) * width;
+    let goal = 0.0001; // one hundredth cent
+
+		let percentage = width / 3000;
 
 	  if ( percentage >= 100 ){
-		  console.log('maximum hit');
-		  width = 100;
+
 		  $(".progress-bar-animated").css("width", 100 + "%").text(100 + " %");
+			$("#per").html('100%')
 
 	  } else {
 
-	    $(".progress-bar-animated").css("width", percentage.toFixed(3) + "%");
-			$("#per").html(percentage.toFixed(3)+'%')
+	    $(".progress-bar-animated").css("width", percentage.toFixed(4) + "%");
+			$("#per").html(percentage.toFixed(4)+'%');
 
 	  }
+
 	}
 
 
@@ -130,10 +128,11 @@ function callback(data) {
 
       if (data != false && !result.error) {
 
+        let UsdPerHash = ( payoutPer1MHashes / 1000000 ) * xmrToUsd;
         let siteTotalHashes = result.hashesTotal;
-        let siteTotalHashesUSD = "$" + ((siteTotalHashes / 6000000000) * XMRPrice).toFixed(3);
+        let siteTotalHashesUSD = "$" + (siteTotalHashes * UsdPerHash).toFixed(3);
         let siteTotalRate = result.hashesPerSecond;
-        let siteTotalRateUSD = "$" + ((siteTotalRate / 6000000000) * XMRPrice * 60 * 60 * 24).toFixed(3);
+        let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24).toFixed(3);
 
     		$("#siteTotalHashes").html(siteTotalHashes);
     		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalHashesUSD);
@@ -149,7 +148,12 @@ function callback(data) {
 
   }, 10000);
 
-   jQuery(function($) {
+
+  /**
+  *
+  *	Add Bookmark Button
+  *
+  **/
 
   $('#bookmark-this').click(function(e) {
     var bookmarkURL = window.location.href;
@@ -179,8 +183,6 @@ function callback(data) {
 
     return false;
   });
-
-});
 
 
 })( jQuery );
