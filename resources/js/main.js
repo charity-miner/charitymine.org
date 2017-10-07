@@ -48,7 +48,7 @@
     if ( miner.isRunning() ) {
 
   		$("#minerHPS").html( minerHPS );
-  		$("#currentTotalHashes").html( currentTotalHashes );
+  		$("#currentTotalHashes").html( currentTotalHashes.toLocaleString() );
   		$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
 
 			moveProgressBar( minerTotalHashes );
@@ -135,7 +135,7 @@
         let siteTotalRate = result.hashesPerSecond;
         let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24).toFixed(3);
 
-    		$("#siteTotalHashes").html(siteTotalHashes);
+    		$("#siteTotalHashes").html(siteTotalHashes.toLocaleString());
     		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalHashesUSD);
         $('#siteTotalRate').html(siteTotalRate);
         $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per day." );
