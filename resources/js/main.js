@@ -81,8 +81,8 @@
 
 	  } else {
 
-	    $(".progress-bar-animated").css("width", percentage.toFixed(4) + "%");
-			$("#per").html(percentage.toFixed(4)+'%');
+	    $(".progress-bar-animated").css("width", percentage.toFixed(3) + "%");
+			$("#per").html(percentage.toFixed(3)+'%');
 
 	  }
 
