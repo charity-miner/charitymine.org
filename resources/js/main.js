@@ -79,7 +79,8 @@ function callback(data) {
 	  if ( percentage >= 100 ){
 		  console.log('maximum hit');
 		  width = 100;
-		  $(".progress-bar-animated").css("width", 100 + "%").text(100 + " %");
+		  $(".progress-bar-animated").css("width", 100 + "%");
+			$("#per").html(100+'%')
 
 	  } else {
 

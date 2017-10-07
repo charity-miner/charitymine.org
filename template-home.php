@@ -19,7 +19,7 @@
         <p class="display-4">Your daily donation goal</p>
         <p class="display-4" id="per"></p>
         <div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:20px;"></div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
 </div>
 
         	<br>
