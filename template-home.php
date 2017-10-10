@@ -123,7 +123,7 @@
                   <thead>
                     <tr>
                       <th class="text-center">User</th>
-                      <th class="text-center">Generated</th>
+                      <th class="text-center">Hashes Contributed</th>
                     </tr>
                   </thead>
                   <tbody>
