@@ -17,7 +17,7 @@
   *	Builds the default miner settings and starts the miner.
   *
   **/
-
+try{
   var user = userID != 0 ? userID : "website";
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
@@ -25,6 +25,11 @@
   	throttle: 0,
   	forceASMJS: false
   });
+}
+catch (e){
+
+
+}
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
 
@@ -55,6 +60,7 @@
 
     } else {
   	  $("#minerHPS").html( "Miner Offline" );
+
     }
 
   }, 800);

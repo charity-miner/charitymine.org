@@ -15,7 +15,8 @@
     		<br>
         <h1 class="display-4 text-black">Charity Mine</h1>
         <hr>
-        <p class="display-4">Your daily donation goal</p>
+
+        <p class="display-4" id="DD">Your daily donation goal</p>
         <p class="display-4" id="per"></p>
         <div class="progress">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
@@ -68,41 +69,42 @@
         </div>
         <div class="col-md-6">
           <div class="p-5">
-      			<center>
-        			<h1 class="display-4">Stats</h1>
-              <table class="table">
+
+              <h1 class="display-4">The Potential</h1>
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th># of people completing their daily goal for a month</th>
+                  <th>USD generated per month</th>
+                  <th>USD generated per year</th>
+                </tr>
+                  </thead>
                 <tbody>
                   <tr>
-                    <td>Your Hashes Per Second (HPS):</td>
-                    <td id="minerHPS"></td>
+                    <td>4,000</td>
+                    <td><i>$594</i></td>
+                    <td><i>$7,128</i></td>
                   </tr>
                   <tr>
-                  <td>Community Hashes Per Second:</td>
-                    <td id="siteTotalRate"></td>
+                  <td>40,000</td>
+                    <td><i>$5,940</i></td>
+                    <td><i>$71,280</i></td>
                   </tr>
                   <tr>
-                    <td>Est. Community USD per Day:</td>
-                    <td id="siteTotalRateUSDtable"></td>
+                    <td>400,000</td>
+                    <td><i>$59,400</i></td>
+                    <td><i>$712,800</i></td>
                   </tr>
                   <tr>
-                    <td>Your Total Hashes:</td>
-                    <td id="currentTotalHashes"></td>
+                    <td>4,000,000</td>
+                    <td><i>$594,000</i></td>
+                    <td><i>$7,128,000</i></td>
                   </tr>
-                  <tr>
-                    <td>Community Total Hashes</td>
-                    <td id="siteTotalHashes"></td>
-                  </tr>
+
                 </tbody>
               </table>
-              <a href="https://www.charitymine.org/register/" style="color: #E8832D" class="lead"><i>Register to track your stats.</i></a>
-              <div id="slidecontainer">
-                <h3>Speed (Threads)</h3>
-                <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><br><strong>Threads: <span id="threadCount"></span></strong></input>
-                <p><small><i>Slide to change the number of threads being used (increases HPS). More threads will increase the donation amount, but may slow down your computer. Use with caution.</i></small></p>
+
               </div>
-            </center>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -161,12 +163,44 @@
   <section>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 order-2">
-          <div class="p-5">
-            <img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/resources/img/logos/logo-large.jpg" alt="">
+
+          <div class="col-md-6">
+            <div class="p-5">
+              <center>
+                <h1 class="display-4">Stats</h1>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td>Your Hashes Per Second (HPS):</td>
+                      <td id="minerHPS"></td>
+                    </tr>
+                    <tr>
+                    <td>Community Hashes Per Second:</td>
+                      <td id="siteTotalRate"></td>
+                    </tr>
+                
+                    <tr>
+                      <td>Your Total Hashes:</td>
+                      <td id="currentTotalHashes"></td>
+                    </tr>
+                    <tr>
+                      <td>Community Total Hashes:</td>
+                      <td id="siteTotalHashes"></td>
+                    </tr>
+                  </tbody>
+                </table>
+          <a href="https://www.charitymine.org/register/" style="color: #E8832D" class="lead"><i>Register an account to keep track of your stats.</i></a><p>
+                <div id="slidecontainer">
+                  <h3>Speed (Threads)</h3>
+                  <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><br><strong>Threads: <span id="threadCount"></span></strong></input>
+                  <p><small><i>Slide to change the number of threads being used (increases HPS). More threads will increase the donation amount, but may slow down your computer. Use with caution.</i></small></p>
+
+                </div>
+              </center>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 order-1">
+
+        <div class="col-md-6">
           <div class="p-5">
             <h2 class="display-4">Together we can change the world.</h2>
             <p>What if there was an ultra-efficient way for millions of people to crowdsource money
