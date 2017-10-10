@@ -78,57 +78,12 @@
         </div>
         <div class="col-md-6">
           <div class="p-5">
-      			<center>
-        			<h1 class="display-4">Stats</h1>
-              <table class="table table-hover">
-                <tbody>
-                  <tr>
-                    <td>Your Hashes Per Second (HPS):</td>
-                    <td id="minerHPS"></td>
-                  </tr>
-                  <tr>
-                  <td>Community Hashes Per Second:</td>
-                    <td id="siteTotalRate"></td>
-                  </tr>
-                  <tr>
-                    <td>Est. Community USD per Day:</td>
-                    <td id="siteTotalRateUSDtable"></td>
-                  </tr>
-                  <tr>
-                    <td>Your Total Hashes:</td>
-                    <td id="currentTotalHashes"></td>
-                  </tr>
-                  <tr>
-                    <td>Community Total Hashes</td>
-                    <td id="siteTotalHashes"></td>
-                  </tr>
-                </tbody>
-              </table>
-			  <a href="https://www.charitymine.org/register/" style="color: #E8832D" class="lead"><i>Register an account to keep track of your stats.</i></a><p>
-              <div id="slidecontainer">
-                <h3>Speed (Threads)</h3>
-                <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><br><strong>Threads: <span id="threadCount"></span></strong></input>
-                <p><small><i>Slide to change the number of threads being used (increases HPS). More threads will increase the donation amount, but may slow down your computer. Use with caution.</i></small></p>
-
-              </div>
-            </center>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="p-5">
 
               <h1 class="display-4">The Potential</h1>
               <table class="table table-hover">
                 <thead>
                 <tr>
-                  <th># of people that complete their daily goal for a month</th>
+                  <th># of people completing their daily goal for a month</th>
                   <th>USD generated per month</th>
                   <th>USD generated per year</th>
                 </tr>
@@ -160,6 +115,52 @@
 
               </div>
 
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+
+          <div class="col-md-6">
+            <div class="p-5">
+              <center>
+                <h1 class="display-4">Stats</h1>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td>Your Hashes Per Second (HPS):</td>
+                      <td id="minerHPS"></td>
+                    </tr>
+                    <tr>
+                    <td>Community Hashes Per Second:</td>
+                      <td id="siteTotalRate"></td>
+                    </tr>
+                    <tr>
+                      <td>Est. Community USD per Day:</td>
+                      <td id="siteTotalRateUSDtable"></td>
+                    </tr>
+                    <tr>
+                      <td>Your Total Hashes:</td>
+                      <td id="currentTotalHashes"></td>
+                    </tr>
+                    <tr>
+                      <td>Community Total Hashes:</td>
+                      <td id="siteTotalHashes"></td>
+                    </tr>
+                  </tbody>
+                </table>
+          <a href="https://www.charitymine.org/register/" style="color: #E8832D" class="lead"><i>Register an account to keep track of your stats.</i></a><p>
+                <div id="slidecontainer">
+                  <h3>Speed (Threads)</h3>
+                  <input type="range" min="1" max="8" value="2" class="slider" id="threadRange"><br><strong>Threads: <span id="threadCount"></span></strong></input>
+                  <p><small><i>Slide to change the number of threads being used (increases HPS). More threads will increase the donation amount, but may slow down your computer. Use with caution.</i></small></p>
+
+                </div>
+              </center>
+            </div>
           </div>
 
         <div class="col-md-6">
