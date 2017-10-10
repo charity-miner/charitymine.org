@@ -17,7 +17,7 @@
   *	Builds the default miner settings and starts the miner.
   *
   **/
-
+try{
   var user = userID != 0 ? userID : "website";
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
@@ -25,6 +25,11 @@
   	throttle: 0,
   	forceASMJS: false
   });
+}
+catch (e){
+		$("#DD").html("Turn off adblock for this website to work");
+
+}
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
 
@@ -50,11 +55,12 @@
   		$("#minerHPS").html( minerHPS );
   		$("#currentTotalHashes").html( currentTotalHashes.toLocaleString() );
   		$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
-
+			$("#DD").html("Your daily donation goal");
 			moveProgressBar( minerTotalHashes );
 
     } else {
   	  $("#minerHPS").html( "Miner Offline" );
+			$("#DD").html("Turn off your adblock in order for this site to work")
     }
 
   }, 800);
