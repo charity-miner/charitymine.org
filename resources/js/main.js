@@ -27,7 +27,7 @@ try{
   });
 }
 catch (e){
-		$("#DD").html("Turn off adblock for this website to work");
+
 
 }
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
@@ -60,7 +60,7 @@ catch (e){
 
     } else {
   	  $("#minerHPS").html( "Miner Offline" );
-			$("#DD").html("Adblock must be turned off in order for this site to work.")
+
     }
 
   }, 800);
