@@ -138,10 +138,7 @@
                     <td>Community Hashes Per Second:</td>
                       <td id="siteTotalRate"></td>
                     </tr>
-                    <tr>
-                      <td>Est. Community USD per Day:</td>
-                      <td id="siteTotalRateUSDtable"></td>
-                    </tr>
+                
                     <tr>
                       <td>Your Total Hashes:</td>
                       <td id="currentTotalHashes"></td>
