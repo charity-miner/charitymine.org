@@ -19,27 +19,19 @@
         <p class="display-4" id="DD">Your daily donation goal</p>
         <p class="display-4" id="per"></p>
         <div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
-</div>
-
-        	<br>
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
+        </div>
+        <br>
         <p class="lead"><i>Just keep this tab open while you browse the web and you'll automatically contribute real money to charity. <b>That's it.</b></i></p>
-
-
-
-          <br>
+        <br>
         <center>
-		<a id="learnmore-this" href="https://www.charitymine.org/how-it-works/" title="How it Works">How it works</a><p><br>
-
+          <a class="btn btn-brand" role="button" href="https://www.charitymine.org/how-it-works/" title="How it Works">How it works</a>
+          <br><br>
           <div class="fb-share-button" data-href="https://www.charitymine.org" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.charitymine.org%2F&amp;src=sdkpreparse">Share</a></div>
-
-
         </center>
       </div>
     </div>
   </header>
-
-
 
   <section class="bg-dark">
     <div class="container ">
@@ -50,7 +42,7 @@
             <p>This site uses a small portion of your computing power to help solve mathematical puzzles. When a puzzle gets solved it generates Monero (XMR), a cryptocurrency which can be traded in for US Dollars. If more users visit this site, more Monero is mined for charity.</p>
             <p id="siteTotalRateUSD"></p>
             <p><i>* Donations are made every fifty dollars earned and receipts will be posted to the site.</i> </p>
-			<a id="learnmore-this" href="https://www.charitymine.org/how-it-works/" title="Learn More">Learn More</a><br>
+            <a class="btn btn-brand" role="button" href="https://www.charitymine.org/how-it-works/" title="Learn More">Learn More</a><br>
           </div>
         </div>
         <div class="col-md-6 order-1">
@@ -58,7 +50,6 @@
             <center>
               <div class="boxUSD">
                 <p id="siteTotalHashesUSD" class="display-4"></p>
-
               </div>
             </center>
           </div>
@@ -114,11 +105,58 @@
               </table>
 
               </div>
-
-          </div>
       </div>
     </div>
   </section>
+
+  <?php
+  $topUsers = json_decode(charity_mine_get_coin_hive_top_users_data());
+  if ( $topUsers && $topUsers->success ) { ?>
+    <section style="background:#efefef;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="p-5">
+        			<center>
+          			<h1 class="display-4">Top Users</h1>
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-center">User</th>
+                      <th class="text-center">Hashes Contributed</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $count = 0;
+                    $bans = [
+                      'test',
+                      'website',
+                      'Golf'
+                    ];
+                    foreach ( $topUsers->users as $user ) {
+                      if ( $count < 5 && !in_array($user->name, $bans) ) {
+                        $userData = get_userdata($user->name);
+                        $name = ($userData->display_name) ? ucwords($userData->display_name) : 'User #' . $user->name;
+                        $currentUser = ( get_current_user_id() == $user->name ) ? ' (you)' : '';
+                        echo '<tr>';
+                          echo '<td>' . $name . $currentUser . '</td>';
+                          echo '<td>' . number_format($user->balance) . '</td>';
+                        echo '</tr>';
+                        ++$count;
+                      }
+                    }
+                    ?>
+                  </tbody>
+                </table>
+                <a class="btn btn-brand" role="button" href="https://www.charitymine.org/register/">Register to track your stats</a>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <?php } ?>
 
   <section>
     <div class="container">
@@ -138,7 +176,7 @@
                     <td>Community Hashes Per Second:</td>
                       <td id="siteTotalRate"></td>
                     </tr>
-                
+
                     <tr>
                       <td>Your Total Hashes:</td>
                       <td id="currentTotalHashes"></td>
@@ -167,7 +205,7 @@
 towards humanitarian causes simply by opening a webpage? </p>
             <p>We believe that doing good should be easy, and in today’s increasingly
 complex, time-stretched society, we want to provide a medium for people to do just that.</p>
-<a id="bookmark-this" href="#" title="Bookmark">Bookmark this page</a>
+            <a id="bookmark-this" class="btn btn-brand" role="button" href="#" title="Bookmark">Bookmark this page</a>
           </div>
         </div>
       </div>

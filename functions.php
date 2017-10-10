@@ -76,7 +76,7 @@ function charity_mine_js_helpers() {
     $script .= 'var publicKey = "' . get_theme_mod( 'charity_mine_coin_hive_public' ) . '";' . PHP_EOL;
   }
 
-  $userTotal = charity_mine_get_coin_hive_user_total();
+  $userTotal = charity_mine_get_coin_hive_user_total( get_current_user_id() );
 
   $script .= 'var userTotalHashes = ' . $userTotal . ';' . PHP_EOL;
 
@@ -164,10 +164,9 @@ function charity_mine_get_coin_hive_payout_data() {
 *
 **/
 
-function charity_mine_get_coin_hive_user_total() {
+function charity_mine_get_coin_hive_user_total( $userID ) {
 
   $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
-  $userID = get_current_user_id();
 
   if (! $secret_key || $userID == 0 ) {
     return 0;
@@ -187,6 +186,66 @@ function charity_mine_get_coin_hive_user_total() {
 
   return $response->total;
 }
+
+
+/**
+*
+* Coin Hive Top Users
+*
+*	Calls Coinhive API and returns top user list.
+* See template-home.php
+* https://coinhive.com/documentation/http-api#user-top
+*
+**/
+
+function charity_mine_get_coin_hive_top_users_data() {
+
+  $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+
+  if (! $secret_key ) {
+    echo false;
+  }
+
+  $response = wp_remote_get( "https://api.coinhive.com/user/top?secret=" . $secret_key . "&count=10" );
+
+  if (! is_array( $response ) ) {
+    echo false;
+  }
+
+  return $response['body'];
+}
+
+
+/**
+*
+* Add Total Hashes User Column
+*
+*	Adds the Total Hashes user column to the User Table.
+*
+**/
+
+function charity_mine_add_user_columns( $column_headers ) {
+  $column_headers['total_hashes'] = 'Total Hashes';
+  return $column_headers;
+}
+add_action('manage_users_columns','charity_mine_add_user_columns');
+
+
+/**
+*
+* Add Total Hashes Data to User Rows
+*
+*	Adds the Total Hashes value to each user row in the Users Table
+*
+**/
+
+function charity_mine_add_total_hashes_column_content($value, $column_name, $user_id) {
+  if ( 'total_hashes' == $column_name ) {
+    return charity_mine_get_coin_hive_user_total( $user_id );
+  }
+  return $value;
+}
+add_action('manage_users_custom_column', 'charity_mine_add_total_hashes_column_content', 10, 3);
 
 
 /**
