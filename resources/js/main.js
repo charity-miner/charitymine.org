@@ -60,7 +60,7 @@ catch (e){
 
     } else {
   	  $("#minerHPS").html( "Miner Offline" );
-			$("#DD").html("Turn off your adblock in order for this site to work")
+			$("#DD").html("Adblock must be turned off in order for this site to work.")
     }
 
   }, 800);
