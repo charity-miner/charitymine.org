@@ -80,7 +80,7 @@
           <div class="p-5">
       			<center>
         			<h1 class="display-4">Stats</h1>
-              <table class="table">
+              <table class="table table-hover">
                 <tbody>
                   <tr>
                     <td>Your Hashes Per Second (HPS):</td>
@@ -121,12 +121,48 @@
   <section>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 order-2">
+        <div class="col-md-6">
           <div class="p-5">
-            <img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/resources/img/logos/logo-large.jpg" alt="">
+
+              <h1 class="display-4">The Potential</h1>
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th># of people that complete their daily goal for a month</th>
+                  <th>USD generated per month</th>
+                  <th>USD generated per year</th>
+                </tr>
+                  </thead>
+                <tbody>
+                  <tr>
+                    <td>4,000</td>
+                    <td><i>$594</i></td>
+                    <td><i>$7,128</i></td>
+                  </tr>
+                  <tr>
+                  <td>40,000</td>
+                    <td><i>$5,940</i></td>
+                    <td><i>$71,280</i></td>
+                  </tr>
+                  <tr>
+                    <td>400,000</td>
+                    <td><i>$59,400</i></td>
+                    <td><i>$712,800</i></td>
+                  </tr>
+                  <tr>
+                    <td>4,000,000</td>
+                    <td><i>$594,000</i></td>
+                    <td><i>$7,128,000</i></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              </div>
+
           </div>
-        </div>
-        <div class="col-md-6 order-1">
+
+        <div class="col-md-6">
           <div class="p-5">
             <h2 class="display-4">Together we can change the world.</h2>
             <p>What if there was an ultra-efficient way for millions of people to crowdsource money
