@@ -16,7 +16,7 @@
         <h1 class="display-4 text-black">Charity Mine</h1>
         <hr>
 
-        <p class="display-4" id="DD"></p>
+        <p class="display-4" id="DD">Your daily donation goal</p>
         <p class="display-4" id="per"></p>
         <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>

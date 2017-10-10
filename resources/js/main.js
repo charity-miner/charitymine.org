@@ -55,7 +55,7 @@ catch (e){
   		$("#minerHPS").html( minerHPS );
   		$("#currentTotalHashes").html( currentTotalHashes.toLocaleString() );
   		$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
-			$("#DD").html("Your daily donation goal");
+
 			moveProgressBar( minerTotalHashes );
 
     } else {
