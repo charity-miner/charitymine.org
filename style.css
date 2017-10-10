@@ -16,7 +16,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 ----------------------------------------------------------------
 # Header
 # Footer
-# Links
+# Links & Buttons
 # Accessibility
 # Alignments
 # Clearings
@@ -78,35 +78,42 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
   color: #fff;
 }
 
+
 /*--------------------------------------------------------------
-# Links
+# Links & Buttons
 --------------------------------------------------------------*/
-a {
-	color: royalblue;
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+.btn-brand {
+  background-color: #ea831c;
+  border: 1px solid #ea831c;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+.btn-brand:hover {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+}
+.btn-brand:active {
+  background-color: #ec971f;
+  border: 1px solid #ea831c;
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-a:visited {
-	color: purple;
-}
-
-a:hover,
-a:focus,
-a:active {
-	color: midnightblue;
-}
-
-a:focus {
-	outline: thin dotted;
-}
-
-a:hover,
-a:active {
-	outline: 0;
-}
 
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -145,6 +152,7 @@ a:active {
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
+
 .alignleft {
 	display: inline;
 	float: left;
@@ -164,9 +172,11 @@ a:active {
 	margin-right: auto;
 }
 
+
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
+
 .clear:before,
 .clear:after,
 .entry-content:before,
@@ -193,9 +203,11 @@ a:active {
 	clear: both;
 }
 
+
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
+
 .widget {
 	margin: 0 0 1.5em;
 }
@@ -205,14 +217,16 @@ a:active {
 	max-width: 100%;
 }
 
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
 
 #main {
   min-height: calc(100vh - 320px);
-padding-top:25px;
+  padding-top:25px;
 }
+
 
 /*--------------------------------------------------------------
 ## Posts and pages
@@ -233,9 +247,11 @@ padding-top:25px;
   padding-bottom: 30px;
 }
 
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+
 .comment-content a {
 	word-wrap: break-word;
 }
@@ -248,6 +264,7 @@ padding-top:25px;
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -269,9 +286,11 @@ object {
 	display: inline-block;
 }
 
+
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
+
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%;
@@ -294,6 +313,7 @@ object {
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
+
 .gallery {
 	margin-bottom: 1.5em;
 }
@@ -357,118 +377,55 @@ header.masthead {
 }
 
 header.masthead > .overlay {
-    padding: 1rem 0;
-    text-align: center;
-    background: white;
+  padding: 1rem 0;
+  text-align: center;
+  background: white;
 }
 
 @media (min-width: 992px) {
-    header.masthead > .overlay {
-        padding: 3rem 0;
-    }
+  header.masthead > .overlay {
+      padding: 3rem 0;
+  }
 }
 .slider {
-    -webkit-appearance: none;
-    width: 60%;
-    height: 15px;
-    border-radius: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  -webkit-appearance: none;
+  width: 60%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #db7508;
-    cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #db7508;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #db7508;
-    cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #db7508;
+  cursor: pointer;
 }
 .col-centered{
-    float: none;
-    margin: 0 auto;
+  float: none;
+  margin: 0 auto;
 }
 .boxUSD {
 	border: 3px solid black;
-    width: 300px;
-    height: 220px;
+  width: 300px;
+  height: 220px;
 	padding-top: 10px;
-    opacity: 0.9;
+  opacity: 0.9;
 	background: white;
 	border-radius: 25px;
 }
-#bookmark-this {
-  padding: 10px 20px;
-  background-color: #ea831c;
-  border: 1px solid #ea831c;
-  border-radius: 4px;
-  font-size: 20px;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-     float: none;
-    margin: 0 auto;
-}
-
-#bookmark-this:hover {
-  background-color: #ec971f;
-  border: 1px solid #ea831c;
-  text-decoration: none;
-}
-
-#bookmark-this:active {
-  background-color: #ec971f;
-  border: 1px solid #ea831c;
-  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-#learnmore-this {
-  padding: 10px 20px;
-  background-color: #ea831c;
-  border: 1px solid #ea831c;
-  border-radius: 4px;
-  font-size: 20px;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-     float: none;
-    margin: 0 auto;
-}
-
-#learnmore-this:hover {
-  background-color: #ec971f;
-  border: 1px solid #ea831c;
-  text-decoration: none;
-}
-
-#learnmore-this:active {
-  background-color: #ec971f;
-  border: 1px solid #ea831c;
-  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-

@@ -191,6 +191,34 @@ function charity_mine_get_coin_hive_user_total() {
 
 /**
 *
+* Coin Hive Top Users
+*
+*	Calls Coinhive API and returns top user list.
+* See template-home.php
+* https://coinhive.com/documentation/http-api#user-top
+*
+**/
+
+function charity_mine_get_coin_hive_top_users_data() {
+
+  $secret_key = get_theme_mod( 'charity_mine_coin_hive_secret' );
+
+  if (! $secret_key ) {
+    echo false;
+  }
+
+  $response = wp_remote_get( "https://api.coinhive.com/user/top?secret=" . $secret_key . "&count=10" );
+
+  if (! is_array( $response ) ) {
+    echo false;
+  }
+
+  return $response['body'];
+}
+
+
+/**
+*
 * Customizer Settings
 *
 *	Adds Coin Hive Settings section and settings.
