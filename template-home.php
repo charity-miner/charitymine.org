@@ -134,17 +134,15 @@
                       'website',
                       'Golf'
                     ];
-
                     foreach ( $topUsers->users as $user ) {
                       if ( $count < 5 && !in_array($user->name, $bans) ) {
-
+                        $userData = get_userdata($user->name);
+                        $name = ($userData->display_name) ? ucwords($userData->display_name) : 'User #' . $user->name;
                         $currentUser = ( get_current_user_id() == $user->name ) ? ' (you)' : '';
-
                         echo '<tr>';
-                          echo '<td>User #' . $user->name . $currentUser . '</td>';
+                          echo '<td>' . $name . $currentUser . '</td>';
                           echo '<td>' . number_format($user->balance) . '</td>';
                         echo '</tr>';
-
                         ++$count;
                       }
                     }
@@ -178,7 +176,7 @@
                     <td>Community Hashes Per Second:</td>
                       <td id="siteTotalRate"></td>
                     </tr>
-                
+
                     <tr>
                       <td>Your Total Hashes:</td>
                       <td id="currentTotalHashes"></td>
