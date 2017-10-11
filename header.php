@@ -36,7 +36,7 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-</script>
+  </script>
 
   <div id="top-nav">
     <div class="container">
@@ -48,7 +48,7 @@
 					<a href="https://github.com/charity-miner/charitymine.org" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
         </div>
         <div class="right-col col-sm-8">
-          <span class="currentTotalCash">You have generated: $0.00000000</span>
+          <span class="currentTotalTime">You have donated: 0 hours</span>
           <?php if (! is_user_logged_in() ) { ?>
             &nbsp;&middot;&nbsp;
             <a href="<?php echo get_home_url(); ?>/log-in">Login</a> &middot;

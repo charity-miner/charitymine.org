@@ -17,7 +17,6 @@
   *	Builds the default miner settings and starts the miner.
   *
   **/
-try{
   var user = userID != 0 ? userID : "website";
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
@@ -25,11 +24,6 @@ try{
   	throttle: 0,
   	forceASMJS: false
   });
-}
-catch (e){
-
-
-}
   miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
 
@@ -54,45 +48,13 @@ catch (e){
 
   		$("#minerHPS").html( minerHPS );
   		$("#currentTotalHashes").html( currentTotalHashes.toLocaleString() );
-  		$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
-
-			moveProgressBar( minerTotalHashes );
+  		//$(".currentTotalCash").html( "You have generated: $" + currentTotalCash.toFixed(8) );
 
     } else {
   	  $("#minerHPS").html( "Miner Offline" );
-
     }
 
   }, 800);
-
-
-  /**
-  *
-  * Move the Progress Bar
-  *
-  **/
-
-	function moveProgressBar( width ) {
-
-  	let UsdGenerated = ( ( payoutPer1MHashes / 1000000 ) * xmrToUsd ) * width;
-    let goal = 0.0001; // one hundredth cent
-
-		let percentage = width / 3000;
-
-	  if ( percentage >= 100 ){
-		  console.log('maximum hit');
-		  width = 100;
-		  $(".progress-bar-animated").css("width", 100 + "%");
-			$("#per").html(100+'%')
-
-	  } else {
-
-	    $(".progress-bar-animated").css("width", percentage.toFixed(3) + "%");
-			$("#per").html(percentage.toFixed(3)+'%');
-
-	  }
-
-	}
 
 
   /**
@@ -154,6 +116,69 @@ catch (e){
     });
 
   }, 10000);
+
+
+  /**
+  *
+  *	Update User Time Online Today
+  *
+  *	AJAX request to admin-ajax.php using updateusertime action
+  * See functions.php charity_mine_update_user_time()
+  *
+  **/
+
+  setInterval(window.onload=function() {
+
+    $.get( homeURL + "/wp-admin/admin-ajax.php?action=updateusertime" );
+
+  }, 10000);
+
+
+  /**
+  *
+  *	Get & Show User Time Online
+  *
+  * Updated every 1 second
+  *
+  **/
+
+  setInterval(window.onload=function() {
+
+    $(".currentTotalTime").html( "You have donated: " + (userTotalTime / (60 * 60)).toFixed(3) + ' hours' );
+
+    moveProgressBar( userTotalTime );
+
+    userTotalTime++;
+
+  }, 1000);
+
+
+  /**
+  *
+  * Move the Progress Bar
+  *
+  **/
+
+	function moveProgressBar( width ) {
+
+    let goal = 60 * 60; // 60 minutes, in seconds
+
+		let percentage = ( width / goal ) * 100;
+
+	  if ( percentage >= 100 ){
+
+		  width = 100;
+		  $(".progress-bar-animated").css("width", 100 + "%");
+			$("#per").html(100+'%')
+
+	  } else {
+
+	    $(".progress-bar-animated").css("width", percentage.toFixed(2) + "%");
+			$("#per").html(percentage.toFixed(2)+'%');
+
+	  }
+
+	}
 
 
   /**
