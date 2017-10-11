@@ -130,7 +130,9 @@
                     $bans = [
                       'test',
                       'website',
-                      'Golf'
+                      'Golf',
+                      '1',
+                      '2'
                     ];
                     foreach ( $topUsers->users as $user ) {
                       if ( $count < 5 && !in_array($user->name, $bans) ) {
