@@ -139,10 +139,11 @@ catch (e){
         let siteTotalHashes = result.hashesTotal;
         let siteTotalHashesUSD = "$" + (siteTotalHashes * UsdPerHash).toFixed(3);
         let siteTotalRate = result.hashesPerSecond;
+        let siteTotalPayout = "$" + ((result.xmrPending + result.xmrPaid)*xmrToUsd).toFixed(3);
         let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24).toFixed(3);
 
     		$("#siteTotalHashes").html(siteTotalHashes.toLocaleString());
-    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalHashesUSD);
+    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalPayout);
         $('#siteTotalRate').html(siteTotalRate);
         $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per day." );
         $('#siteTotalRateUSDtable').html(siteTotalRateUSD);
