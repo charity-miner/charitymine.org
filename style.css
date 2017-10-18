@@ -84,7 +84,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 
 .btn {
-  
+  white-space: normal;
   padding: 10px 20px;
   border-radius: 4px;
   -webkit-user-select:none;
