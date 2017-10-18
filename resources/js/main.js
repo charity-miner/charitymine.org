@@ -30,7 +30,19 @@ catch (e){
 
 
 }
-  miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+
+
+  $("#play").on("click", function(){
+
+    miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+
+    $('#play').addClass("disabled");
+
+    $('#play').html("You are now generating money for charity. Thank You :-)");
+
+
+
+  });
 
 
   /**
@@ -42,6 +54,7 @@ catch (e){
   **/
 
   setInterval( window.onload = function() {
+
 
     let UsdPerHash = ( payoutPer1MHashes / 1000000 ) * xmrToUsd;
     let minerHPS = Math.round( miner.getHashesPerSecond() * 100 ) / 100;
@@ -64,6 +77,9 @@ catch (e){
     }
 
   }, 800);
+
+
+
 
 
   /**
