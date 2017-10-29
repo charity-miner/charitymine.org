@@ -85,8 +85,6 @@
 
     if ( miner.isRunning() ) {
 
-      console.log('update user time');
-
       $.get( homeURL + "/wp-admin/admin-ajax.php?action=updateusertime" );
 
     }
