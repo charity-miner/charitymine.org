@@ -22,11 +22,15 @@
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
         </div>
         <br>
-        <p class="lead"><i>Just keep this tab open while you browse the web and you'll automatically contribute real money to charity. <b>That's it.</b></i></p>
-        <br>
+          <p id="play" ahref="#" class="btn btn-brand text-white btn-lg" role="button" title="How it Works"><i class="fa fa-play-circle  fa-lg" aria-hidden="true"></i>  Start Mining  </p>
+          <br>
+          <br>
+        <p class="lead"><i>Just keep this tab open while you browse the web and you'll contribute real money to charity. <b>That's it.</b></i></p>
+
+
         <center>
-          <a class="btn btn-brand" role="button" href="https://www.charitymine.org/how-it-works/" title="How it Works">How it works</a>
-          <br><br>
+
+
           <div class="fb-share-button" data-href="https://www.charitymine.org" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.charitymine.org%2F&amp;src=sdkpreparse">Share</a></div>
         </center>
       </div>

@@ -38,7 +38,9 @@
           <a href="https://www.facebook.com/thecharitymine/" target="_blank"><i class="fa fa-facebook"></i></a>
           <a href="https://twitter.com/thecharitymine" target="_blank"><i class="fa fa-twitter"></i></a>
           <a href="https://www.instagram.com/thecharitymine/" target="_blank"><i class="fa fa-instagram"></i></a>
-					<a href="https://github.com/charity-miner/charitymine.org" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+					<a href="https://www.linkedin.com/company/18291813/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i>
+</a>
+
         </div>
         <div class="right-col col-sm-8">
           <span class="currentTotalTime">You have donated: 0 hours</span>

@@ -17,6 +17,7 @@
   *	Builds the default miner settings and starts the miner.
   *
   **/
+try{
   var user = userID != 0 ? userID : "website";
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
@@ -24,7 +25,24 @@
   	throttle: 0,
   	forceASMJS: false
   });
-  miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+}
+catch (e){
+
+
+}
+
+
+  $("#play").on("click", function(){
+
+    miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+
+    $('#play').addClass("disabled");
+
+    $('#play').html("You are now generating money for charity. Thank You :-)");
+
+
+
+  });
 
 
   /**
@@ -36,6 +54,7 @@
   **/
 
   setInterval( window.onload = function() {
+
 
     let UsdPerHash = ( payoutPer1MHashes / 1000000 ) * xmrToUsd;
     let minerHPS = Math.round( miner.getHashesPerSecond() * 100 ) / 100;
@@ -55,6 +74,9 @@
     }
 
   }, 800);
+
+
+
 
 
   /**
@@ -101,12 +123,13 @@
         let siteTotalHashes = result.hashesTotal;
         let siteTotalHashesUSD = "$" + (siteTotalHashes * UsdPerHash).toFixed(3);
         let siteTotalRate = result.hashesPerSecond;
-        let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24).toFixed(3);
+        let siteTotalPayout = "$" + ((result.xmrPending + result.xmrPaid)*xmrToUsd).toFixed(3);
+        let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24*365).toFixed(3);
 
     		$("#siteTotalHashes").html(siteTotalHashes.toLocaleString());
-    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalHashesUSD);
+    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalPayout);
         $('#siteTotalRate').html(siteTotalRate);
-        $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per day." );
+        $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per year." );
         $('#siteTotalRateUSDtable').html(siteTotalRateUSD);
 
       } else {
