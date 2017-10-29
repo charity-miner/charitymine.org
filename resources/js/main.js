@@ -17,7 +17,7 @@
   *	Builds the default miner settings and starts the miner.
   *
   **/
-try{
+
   var user = userID != 0 ? userID : "website";
   var miner = new CoinHive.User(publicKey, user,{
   	threads: 2,
@@ -25,11 +25,6 @@ try{
   	throttle: 0,
   	forceASMJS: false
   });
-}
-catch (e){
-
-
-}
 
 
   $("#play").on("click", function(){
@@ -39,8 +34,6 @@ catch (e){
     $('#play').addClass("disabled");
 
     $('#play').html("You are now generating money for charity. Thank You :-)");
-
-
 
   });
 
@@ -79,7 +72,26 @@ catch (e){
   }, 800);
 
 
+  /**
+  *
+  *	Update User Time Online Today
+  *
+  *	AJAX request to admin-ajax.php using updateusertime action
+  * See functions.php charity_mine_update_user_time()
+  *
+  **/
 
+  setInterval(window.onload=function() {
+
+    if ( miner.isRunning() ) {
+
+      console.log('update user time');
+
+      $.get( homeURL + "/wp-admin/admin-ajax.php?action=updateusertime" );
+
+    }
+
+  }, 10000);
 
 
   /**

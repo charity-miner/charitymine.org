@@ -301,3 +301,93 @@ function pp_redirect_after_registration() {
  exit;
 }
 add_action( 'pp_after_registration', 'pp_redirect_after_registration' );
+
+
+/**
+*
+* Update User Time on Site
+*
+*	Updates the user meta for the current user to reflect time on site.
+*
+**/
+
+function charity_mine_update_user_time() {
+
+  // First, we build out our user meta key to be month-year; within, we track daily time
+  $now            = new DateTime();
+  $current_year   = $now->format("Y");
+  $current_month  = $now->format("m");
+  $current_day    = $now->format("d");
+  $meta_key       = 'charity_mine_user_time';
+
+  // Then, we check if there is already data for this day to add to, otherwise we start at 10s
+  $existing_data = get_user_meta( get_current_user_id(), $meta_key );
+  $existing_data = ($existing_data) ? $existing_data[0] : [];
+  $interval = 10; // seconds
+
+  // Add interval to total, otherwise initialize
+  if ( isset($existing_data['total']) ) {
+    $existing_data['total'] = $existing_data['total'] + $interval;
+  } else {
+    $existing_data['total'] = $interval;
+  }
+
+  // Add interval to year total, otherwise initialize
+  if ( isset($existing_data[$current_year]['total']) ) {
+    $existing_data[$current_year]['total'] = $existing_data[$current_year]['total'] + $interval;
+  } else {
+    $existing_data[$current_year]['total'] = $interval;
+  }
+
+  // Add interval to year-month total, otherwise initialize
+  if ( isset($existing_data[$current_year][$current_month]['total']) ) {
+    $existing_data[$current_year][$current_month]['total'] = $existing_data[$current_year][$current_month]['total'] + $interval;
+  } else {
+    $existing_data[$current_year][$current_month]['total'] = $interval;
+  }
+
+  // Add interval to day, otherwise initialize
+  if ( isset($existing_data[$current_year][$current_month][$current_day]) ) {
+    $existing_data[$current_year][$current_month][$current_day] = $existing_data[$current_year][$current_month][$current_day] + $interval;
+  } else {
+    $existing_data[$current_year][$current_month][$current_day] = $interval;
+  }
+
+  // Finally, we update the user meta
+  update_user_meta( get_current_user_id(), $meta_key, $existing_data );
+}
+add_action( 'wp_ajax_nopriv_updateusertime', 'charity_mine_update_user_time' );
+add_action( 'wp_ajax_updateusertime',        'charity_mine_update_user_time' );
+
+
+/**
+*
+* Get User Time on Site
+*
+*	Return the user meta array for the current user's history of time on site.
+*
+**/
+
+function charity_mine_get_user_time() {
+
+  if (! get_current_user_id()) {
+    return 0;
+  }
+
+  $now            = new DateTime();
+  $current_year   = $now->format("Y");
+  $current_month  = $now->format("m");
+  $current_day    = $now->format("d");
+  $meta_key       = 'charity_mine_user_time';
+
+  $existing_data = get_user_meta( get_current_user_id(), $meta_key, true );
+
+  if (! isset($existing_data) ) {
+    charity_mine_update_user_time();
+    $existing_data = get_user_meta( get_current_user_id(), $meta_key, true );
+  }
+
+  $data = ( isset($existing_data) ) ? $existing_data : 0;
+
+  return $data;
+}
