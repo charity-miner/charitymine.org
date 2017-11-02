@@ -22,7 +22,7 @@
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="height: 40px; font-size:35px;"></div>
         </div>
         <br>
-          <p id="play" ahref="#" class="btn btn-brand text-white btn-lg" role="button" title="How it Works"><i class="fa fa-play-circle  fa-lg" aria-hidden="true"></i>  Start Mining  </p>
+          <p id="play" ahref="#" class="btn btn-brand text-white btn-lg" role="button" title="Start Mining"><i class="fa fa-play-circle  fa-lg" aria-hidden="true"></i>  Start Mining  </p>
           <br>
           <br>
         <p class="lead"><i>Just keep this tab open while you browse the web and you'll contribute real money to charity. <b>That's it.</b></i></p>
