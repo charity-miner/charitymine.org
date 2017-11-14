@@ -31,10 +31,10 @@
 
     miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 
-    $('#play').addClass("disabled");
 
-    $('#play').html("You are now generating money for charity. Thank You :-)");
 
+    $('#play').html("<i id='dropdown' class='fa fa-chevron-circle-down  fa-lg' aria-hidden='true'>   </i> Live Data  ");
+$('#play').attr("href","#Miningstats");
   });
 
 
@@ -169,7 +169,7 @@
         let siteTotalRateUSD = "$" + (siteTotalRate * UsdPerHash * 60 * 60 * 24*365).toFixed(3);
 
     		$("#siteTotalHashes").html(siteTotalHashes.toLocaleString());
-    		$("#siteTotalHashesUSD").html("Total USD Raised: " + siteTotalPayout);
+    		$("#siteTotalHashesUSD").html(siteTotalPayout);
         $('#siteTotalRate').html(siteTotalRate);
         $('#siteTotalRateUSD').html("Right now, people around the world are raising " + siteTotalRateUSD + " per year." );
         $('#siteTotalRateUSDtable').html(siteTotalRateUSD);
