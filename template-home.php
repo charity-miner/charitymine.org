@@ -102,7 +102,7 @@
 
               <div class="card-body text-black">
 <center>
-              <p  style="color:#E8832D;" id="siteTotalHashesUSD" class="display-4" ></p>
+              <p  style="font-weight:bold; color:#E8832D;" id="siteTotalHashesUSD" class="display-4" ></p>
 </center>
               </div>
               </div>
