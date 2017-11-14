@@ -209,7 +209,7 @@
           <div class="col">
             <div class="p-4">
               <center>
-                <div class="card " style="width:auto; " >
+                <div class="card " style="width:225px; " >
                   <div class="card-header">
                     <h2 class="display-4"><i class="fa fa-user" aria-hidden="true"></i><p>
 Top Users</h2>
