@@ -29,7 +29,8 @@
   <div class="collapse" id="Miningstats">
     <div class="card " style="width:auto; " >
       <div class="card-header">
-        <h2 class="display-4"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+        <i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
+        <h2 class="display-4">
 <p>Live Data </h2>
 
       </div>
@@ -102,14 +103,17 @@
 
               <div class="card-body text-black">
 <center>
-              <p  style="font-weight:bold; color:#E8832D;" id="siteTotalHashesUSD" class="display-4" ></p>
+              <p  style="font-weight:500; color:#E8832D;" id="siteTotalHashesUSD" class="display-4" ></p>
 </center>
               </div>
               </div>
 <br>
                 <div class="card" style="width:auto;">
                   <div class="card-header">
-                    <h2 class="display-4 text-center"><i class="fa fa-medkit" aria-hidden="true"></i>
+                    <center>
+                    <i class="fa fa-medkit fa-3x" aria-hidden="true"></i>
+                  </center>
+                    <h2 class="display-4 text-center">
 
 
 <p>Current Charity: </h2>
@@ -136,7 +140,8 @@
             <div class="p-4">
               <div class="card " style="width:auto; " >
                 <div class="card-header text-center">
-                    <h2 class="display-4" > <i class="fa fa-cogs" aria-hidden="true"></i><p> How it works </h2>
+                  <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
+                    <h2 class="display-4" > <p> How it works </h2>
 
                 </div>
 
@@ -156,7 +161,11 @@
 
               <div class="card " style="width:auto; " >
                 <div class="card-header">
-                  <h2 class="display-4 text-center"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                        <center>
+                  <i class="fa fa-line-chart fa-3x" aria-hidden="true"></i>
+            </center>
+
+                  <h2 class="display-4 text-center">
 <p>The Potential</h2>
 
                 </div>
@@ -211,7 +220,10 @@
               <center>
                 <div class="card " style="width:auto; " >
                   <div class="card-header">
-                    <h2 class="display-4"><i class="fa fa-user" aria-hidden="true"></i><p>
+                    <center>
+                    <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                  </center>
+                    <h2 class="display-4"><p>
 Top Users</h2>
 
                   </div>
@@ -261,9 +273,12 @@ Top Users</h2>
   <?php } ?>
   <br>
   <br>
+<br>
+<br>
   <center>
 <img src="<?php echo get_stylesheet_directory_uri(); ?>/resources/img/logos/logo-icon.png" width="160" height="184"/>
-
+<br>
+<br>
 </center>
 
 
