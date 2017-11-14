@@ -35,8 +35,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 #top-nav {
   background: #333;
-  color: #fff;
+  color: #c6c6c6;
   font-size: 16px;
+  padding:3px;
 }
 #top-nav a {
   color: rgba(255,255,255,.5);
@@ -64,6 +65,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 
 #footer #footer-nav #menu-footer {
+  color:orange;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -75,7 +77,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
   padding: 5px;
 }
 #footer #footer-nav #menu-footer li a {
-  color: #fff;
+  color: #c6c6c6;
 }
 
 

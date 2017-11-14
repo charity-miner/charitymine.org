@@ -32,7 +32,7 @@
 
 </script>
 
-  <div id="top-nav">
+  <div id="top-nav"class="sticky">
     <div class="container">
       <div class="row">
         <div class="left-col col-sm-4">

@@ -124,7 +124,9 @@
     <div class="card-body text-black">
 
       <p class="card-text">"Direct Relief is a humanitarian aid organization, active in all 50 states and more than 80 countries, with a mission to improve the health and lives of people affected by poverty or emergencies.​" - Direct Relief</p>
+      <center>
       <a href="https://www.directrelief.org/" class="btn btn-brand">Visit Website</a>
+    </center>
     </div>
   </div>
 
@@ -151,8 +153,9 @@
                 <p>This site uses a small portion of your computing power to help solve mathematical puzzles. When a puzzle gets solved it generates Monero (XMR), a cryptocurrency which can be traded in for US Dollars. If more users visit this site, more Monero is mined for charity.</p>
 
                 <p ><i>* Donations are made every fifty dollars earned and receipts will be posted to the site.</i> </p>
+                <center>
                 <a class="btn btn-brand" role="button" href="https://www.charitymine.org/how-it-works/" title="Learn More">Learn More</a>
-
+              </center>
               </div>
               </div>
 
@@ -315,7 +318,9 @@ Top Users</h2>
             towards humanitarian causes simply by opening a webpage? </p>
               <p>We believe that doing good should be easy, and in today’s increasingly
             complex, time-stretched society, we want to provide a medium for people to do just that.</p>
+            <center>
               <a id="bookmark-this" class="btn btn-brand" role="button" href="#" title="Bookmark">Bookmark this page</a>
+            </center>
             </div>
             </div>
 
