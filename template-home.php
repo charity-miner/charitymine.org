@@ -93,7 +93,7 @@
 
             <div class="p-4">
 
-              <div class="card" style="width:325px; ">
+              <div class="card" style="width:auto; ">
                 <div class="card-header text-center"  >
                   <h2 class="display-4"  >Total USD Raised: </h2>
 
@@ -107,7 +107,7 @@
               </div>
               </div>
 <br>
-                <div class="card" style="width:325px; height:213;">
+                <div class="card" style="width:auto;">
                   <div class="card-header">
                     <h2 class="display-4 text-center"><i class="fa fa-medkit" aria-hidden="true"></i>
 
@@ -115,7 +115,7 @@
 <p>Current Charity: </h2>
   <h2 class="display-4 text-center"> <a href="https://www.directrelief.org/" style="color: #E8832D" target="_blank">Direct Relief</a></h2>
                   </div>
-                  <img src="<?php echo get_stylesheet_directory_uri(); ?>/resources/img/logos/direct.jpg" width="300" height="197" class="card-img-top"/>
+                  <img src="<?php echo get_stylesheet_directory_uri(); ?>/resources/img/logos/direct.jpg" width="auto" height="auto" class="card-img-top"/>
 
     <div class="card-body text-black">
 
@@ -209,7 +209,7 @@
           <div class="col">
             <div class="p-4">
               <center>
-                <div class="card " style="width:225px; " >
+                <div class="card " style="width:auto; " >
                   <div class="card-header">
                     <h2 class="display-4"><i class="fa fa-user" aria-hidden="true"></i><p>
 Top Users</h2>
