@@ -218,14 +218,15 @@ function charity_mine_get_coin_hive_top_users_data() {
 
 /**
 *
-* Add Total Hashes User Column
+* Add Custom User Columns
 *
-*	Adds the Total Hashes user column to the User Table.
+*	Adds the Total Hashes and Total Hours user columns to the User Table.
 *
 **/
 
 function charity_mine_add_user_columns( $column_headers ) {
   $column_headers['total_hashes'] = 'Total Hashes';
+  $column_headers['total_hours'] = 'Total Hours';
   return $column_headers;
 }
 add_action('manage_users_columns','charity_mine_add_user_columns');
@@ -366,6 +367,28 @@ add_action( 'wp_ajax_updateusertime',        'charity_mine_update_user_time' );
 *
 *	Return the user meta array for the current user's history of time on site.
 *
+* This array returns total seconds, total seconds per year, total seconds per month, and total seconds per day - all nested.
+* You will be able to pull timely data like "hours donated in March, 2017"
+*
+* Array:
+* [ "total" : xxx,
+*   ["year" : [
+*     "total" : xxx,
+*       ["month" : [
+*         "total" : xxx,
+*         ["day": xxx],
+*         ["day": xxx]
+*       ],
+*       ["month_2" : [
+*         "total" : xxx,
+*         ["day": xxx],
+*         ["day": xxx]
+*       ]
+*     ]
+*   ]
+* ]
+*
+*
 **/
 
 function charity_mine_get_user_time() {
@@ -391,3 +414,22 @@ function charity_mine_get_user_time() {
 
   return $data;
 }
+
+
+/**
+*
+* Add Total Hours Data to User Rows
+*
+*	Adds the Total Hours value to each user row in the Users Table
+*
+**/
+
+function charity_mine_add_total_hours_column_content($value, $column_name, $user_id) {
+  if ( 'total_hours' == $column_name ) {
+    $time = charity_mine_get_user_time();
+
+    return round( ( $time['total'] / 3600 ), 2);
+  }
+  return $value;
+}
+add_action('manage_users_custom_column', 'charity_mine_add_total_hours_column_content', 10, 3);
