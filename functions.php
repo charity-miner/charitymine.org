@@ -391,9 +391,9 @@ add_action( 'wp_ajax_updateusertime',        'charity_mine_update_user_time' );
 *
 **/
 
-function charity_mine_get_user_time() {
+function charity_mine_get_user_time( $user_id ) {
 
-  if (! get_current_user_id()) {
+  if (! $user_id) {
     return 0;
   }
 
@@ -403,16 +403,13 @@ function charity_mine_get_user_time() {
   $current_day    = $now->format("d");
   $meta_key       = 'charity_mine_user_time';
 
-  $existing_data = get_user_meta( get_current_user_id(), $meta_key, true );
+  $existing_data = get_user_meta( $user_id, $meta_key, true );
 
   if (! isset($existing_data) ) {
-    charity_mine_update_user_time();
-    $existing_data = get_user_meta( get_current_user_id(), $meta_key, true );
+    return 0;
   }
 
-  $data = ( isset($existing_data) ) ? $existing_data : 0;
-
-  return $data;
+  return $existing_data;
 }
 
 
@@ -426,9 +423,12 @@ function charity_mine_get_user_time() {
 
 function charity_mine_add_total_hours_column_content($value, $column_name, $user_id) {
   if ( 'total_hours' == $column_name ) {
-    $time = charity_mine_get_user_time();
+    $time = charity_mine_get_user_time( $user_id );
 
-    return round( ( $time['total'] / 3600 ), 2);
+    if ( is_array($time) ) {
+      return round( ( $time['total'] / 3600 ), 2);
+    }
+    return 0;
   }
   return $value;
 }
